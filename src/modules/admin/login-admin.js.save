@@ -1,9 +1,10 @@
+ls
 const Admin = require("./Admin");
 const { NotFoundError, ForbiddenError } = require("../../shared/errors");
 const { compareSync } = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../../shared/config");
-
+console.log(config)
 const loginAdmin = async ({ body }) => {
   const { username, password } = body;
 
@@ -24,7 +25,7 @@ const loginAdmin = async ({ body }) => {
     role: existing.role,
   };
 
-  const token = jwt.sign({ user: decode },config.jwt.secret, {
+  const token = jwt.sign({ user: decode },"1212", {
     expiresIn: config.jwt.expire_in,
   });
 

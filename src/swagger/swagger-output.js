@@ -7,10 +7,10 @@ const swagger_js = {
     title: "joy bor uz api",
     description: "Documentation yoq",
   },
-  host: `localhost:${config.port}`,
+  host: "back.joy-bor.uz",
   basePath: "/",
   tags: [],
-  schemes: ["http"],
+  schemes: ["https"],
   consumes: ["application/json"],
   produces: ["application/json"],
   paths: {

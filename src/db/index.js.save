@@ -3,8 +3,7 @@ const config = require("../shared/config");
 
 const db = () => {
   mongoose
-    .connect(`mongodb+srv://rahimovayubxon48:lA0l3rsOFoxddbYr@joyboruz.pvor4db.mongodb.net/`)
-    .then(() => {
+    .connect(`    .then(() => {
       console.log("SERVER CONNECTED NICE ALL WORKED :) 🫡");
     })
     .catch(() => {

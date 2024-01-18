@@ -25,6 +25,6 @@ db();
 app.use(handleError);
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.listen(5000, () => {
-  console.log(`server ishlamoqda`);
+app.listen(conf, () => {
+  console.log(`SERVER HAS BEEN STARTED ON PORT:${config.port}`);
 });

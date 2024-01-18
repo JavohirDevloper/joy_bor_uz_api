@@ -8,10 +8,11 @@ const config = {
     name: process.env.DB_NAME,
   },
   jwt: {
-    secret: process.env.JWT_SECRET,
-    expirec_in: process.env.JWT_EXPIRES_IN,
+    secret:"1212",
+    expire_in: "2d",
   },
-  salt: process.env.SALT,
+  backhost:"back.joy-bor.uz",
+  salt: 10,
 };
 
 module.exports = config;
