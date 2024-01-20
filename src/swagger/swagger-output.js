@@ -685,6 +685,583 @@ const swagger_js = {
         },
       },
     },
+    "/elonchange/{id}": {
+      patch: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary: "change status elon admin uchun ",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "proses",
+            in: "formData",
+            type: "string",
+            enum: ["sucses", "not_sucsus", "waiting", "no_faol"],
+          },
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "elons{id}": {
+      get: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary: "Elonni id boyicha olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      delete: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary: "Elonni id boyicha olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/like/elons/{id}": {
+      post: {
+        tags: ["Elons"],
+        summary: "elonlarni yaratish admin uchun!",
+        description: "elonlarni yaratish admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/elonsadmin/{id}": {
+      put: {
+        tags: ["Elons"],
+        summary: "elonlarni update qilish admin uchun!",
+        description: "elonlarni update qilish admin uchun",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "title",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "description",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "images",
+            in: "formData",
+            type: "file",
+          },
+          {
+            name: "honalar_soni",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "uy_maydoni",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "nechinchi_qavat",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "uy_manzili",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "category",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "remont",
+            in: "formData",
+            type: "string",
+            enum: ["o'rta", "yaxshi", "juda zor"],
+          },
+          {
+            name: "price",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "qurilishda_ishlatilgan",
+            in: "formData",
+            type: "string",
+            enum: ["gisht", "shloka_blok"],
+          },
+          {
+            name: "uy_manzil_xaritada[latitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "uy_manzil_xaritada[longitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      delete: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary: "Elonni id boyicha olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    //category
+    "/category": {
+      get: {
+        tags: ["Category"],
+        produces: ["application/json"],
+        summary: "Hamma category olish olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      post: {
+        tags: ["Category"],
+        summary: "elonlarni yaratish admin uchun!",
+        description: "elonlarni yaratish admin uchun",
+        parameters: [
+          {
+            name: "obj",
+            in: "body",
+            description: "adding category",
+            required: true,
+            schema: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string",
+                  example: "category",
+                },
+              },
+              required: ["name"],
+            },
+          },
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin faqat",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/category/{id}": {
+      get: {
+        tags: ["Category"],
+        summary: "all categorys uchun!",
+        description: "all categorys uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "user or admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "category id",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      delete: {
+        tags: ["Category"],
+        summary: "category delete admin uchun!",
+        description: "category delete admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin or user token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "category token",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    //banners
+    "/banner": {
+      get: {
+        tags: ["Banner"],
+        produces: ["application/json"],
+        summary: "Hamma bannerlarni olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      post: {
+        tags: ["Banner"],
+        summary: "banner yaratish admin uchun!",
+        description: "banner yaratish admin uchun",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "title",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "description",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "image",
+            in: "formData",
+            type: "file",
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/banner/{id}": {
+      get: {
+        tags: ["Banner"],
+        summary: "bannerni id boyicha topish uchun",
+        description: "bannerni id boyicha topish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "user or admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "category id",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      delete: {
+        tags: ["Banner"],
+        summary: "bannerni delete admin uchun!",
+        description: "bannerni delete admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "banner id",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      put: {
+        tags: ["Banner"],
+        summary: "banner update admin uchun!",
+        description: "banner update admin uchun",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "title",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "description",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "image",
+            in: "formData",
+            type: "file",
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/banner/un/{id}": {
+      delete: {
+        tags: ["Banner"],
+        summary: "bannerni un delete admin uchun!",
+        description: "bannerni un delete admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "banner id",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
   },
   definitions: {
     schemas: {
@@ -926,6 +1503,15 @@ const swagger_js = {
           "price",
           "qurilishda_ishlatilgan",
         ],
+      },
+      ChangeElonStatus: {
+        type: "object",
+        properties: {
+          process: {
+            type: "object",
+          },
+        },
+        required: ["process"],
       },
     },
   },

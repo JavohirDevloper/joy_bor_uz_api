@@ -4,6 +4,8 @@ const { RemoveBanner } = require("./remove-banner");
 const { UnRemoveBanner } = require("./unremove-banner");
 const httpValidator = require("../../shared/http-validator");
 const { AddBannerSchemas, UpdateBannerSchema } = require("./shema");
+const { AllBanners } = require("./all-banners");
+const { FindbyIdbanners } = require("./findbyidbanners");
 
 const add_banner = async (req, res, next) => {
   try {
@@ -43,4 +45,29 @@ const unremove_banner = async (req, res, next) => {
   }
 };
 
-module.exports = { add_banner, edit_banner, remove_banner, unremove_banner };
+const all_banners = async (req, res, next) => {
+  try {
+    let result = await AllBanners();
+    res.status(200).json({ data: result });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const find_by_id_banners = async (req, res, next) => {
+  try {
+    let result = await FindbyIdbanners({ parmams: req.params });
+    return result;
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  add_banner,
+  edit_banner,
+  remove_banner,
+  unremove_banner,
+  all_banners,
+  find_by_id_banners,
+};

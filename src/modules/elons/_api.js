@@ -7,6 +7,7 @@ const {
   delete_elons,
   delete_elons_all,
   change_proses_elon,
+  find_by_id_elons,
 } = require("./_controller");
 
 const { hasRole, isloggedIn } = require("../../shared/auth");
@@ -21,6 +22,7 @@ let DeleteElonsM = [isloggedIn, hasRole(["user"])];
 let DeleteElonsAllM = [isloggedIn, hasRole(["admin"])];
 let ChangeProsesM = [isloggedIn, hasRole(["admin", "super_admin"])];
 let LikedElonsM = [isloggedIn, hasRole([isloggedIn, hasRole("user")])];
+let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
 
 router.post("/elons", AddElonM, add_elons);
 router.get("/elons", AllElonsM, all_elons);
@@ -30,5 +32,5 @@ router.delete("/elons/:id", DeleteElonsM, delete_elons);
 router.delete("/elonsadmin/:id", DeleteElonsAllM, delete_elons_all);
 router.patch("/elonchange/:id", ChangeProsesM, change_proses_elon);
 router.post("/like/elons/:id", LikedElonsM, LikedElons);
-
+router.get("/elons/:id", FindByIdElonsM, find_by_id_elons);
 module.exports = router;

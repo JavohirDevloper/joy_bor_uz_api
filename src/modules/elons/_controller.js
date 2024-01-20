@@ -5,6 +5,7 @@ const { DeleteElons } = require("./delete_elons");
 const { DeleteElonsAll } = require("./delete-elons-all");
 const { Update_Elons } = require("./update-elon");
 const { Change_Elon_Proses } = require("./change-elon-proses");
+const { FindByIdElons } = require("./findbyidelons");
 
 const all_elons = async (req, res, next) => {
   let result = await AllElons();
@@ -79,6 +80,14 @@ const change_proses_elon = async (req, res, next) => {
     next(error);
   }
 };
+const find_by_id_elons = async (req, res, next) => {
+  try {
+    let result = await FindByIdElons({ params: req.params });
+    res.status(result);
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   all_elons,
   add_elons,
@@ -87,4 +96,5 @@ module.exports = {
   delete_elons_all,
   update_elons,
   change_proses_elon,
+  find_by_id_elons,
 };
