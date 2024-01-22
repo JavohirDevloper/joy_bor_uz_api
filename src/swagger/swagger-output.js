@@ -307,6 +307,15 @@ const swagger_js = {
         description: "user yaratish admin uchun",
         parameters: [
           {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
             name: "obj",
             in: "body",
             description: "User information.",
@@ -562,6 +571,15 @@ const swagger_js = {
         description: "new phone numberga kod yuboriladi",
         parameters: [
           {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
             name: "obj",
             in: "body",
             description: "User information.",
@@ -585,17 +603,6 @@ const swagger_js = {
         tags: ["Elons"],
         produces: ["application/json"],
         summary: "Hamma elonlarni olish",
-        parameters: [
-          {
-            name: "authorization",
-            in: "header",
-            description: "information.",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
-        ],
         responses: {
           200: {
             description: "OK",
@@ -609,6 +616,15 @@ const swagger_js = {
         description: "elonlarni yaratish admin uchun",
         consumes: ["multipart/form-data"],
         parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
           {
             name: "title",
             in: "formData",
@@ -653,7 +669,7 @@ const swagger_js = {
             name: "remont",
             in: "formData",
             type: "string",
-            enum: ["o'rta", "yaxshi", "juda zor"],
+            enum: ["Evrotamir", "O'rtacha", "Tamir talab", "Qora suvoq"],
           },
           {
             name: "price",
@@ -661,10 +677,18 @@ const swagger_js = {
             type: "string",
           },
           {
-            name: "qurilishda_ishlatilgan",
+            name: "devor_turi",
             in: "formData",
             type: "string",
-            enum: ["gisht", "shloka_blok"],
+            enum: [
+              "G'ishit",
+              "Paner",
+              "Monolit",
+              "Shlakoblok",
+              "Yogoch",
+              "Gazoblok",
+              "Sip panel",
+            ],
           },
           {
             name: "uy_manzil_xaritada[latitude]",
@@ -673,6 +697,11 @@ const swagger_js = {
           },
           {
             name: "uy_manzil_xaritada[longitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "qulayliklar",
             in: "formData",
             type: "string",
           },
@@ -824,6 +853,15 @@ const swagger_js = {
         consumes: ["multipart/form-data"],
         parameters: [
           {
+            name: "authorization",
+            in: "header",
+            description: "User information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
             name: "title",
             in: "formData",
             type: "string",
@@ -867,7 +905,7 @@ const swagger_js = {
             name: "remont",
             in: "formData",
             type: "string",
-            enum: ["o'rta", "yaxshi", "juda zor"],
+            enum: ["Evrotamir", "O'rtacha", "Tamir talab", "Qora suvoq"],
           },
           {
             name: "price",
@@ -875,10 +913,18 @@ const swagger_js = {
             type: "string",
           },
           {
-            name: "qurilishda_ishlatilgan",
+            name: "devor_turi",
             in: "formData",
             type: "string",
-            enum: ["gisht", "shloka_blok"],
+            enum: [
+              "G'ishit",
+              "Paner",
+              "Monolit",
+              "Shlakoblok",
+              "Yogoch",
+              "Gazoblok",
+              "Sip panel",
+            ],
           },
           {
             name: "uy_manzil_xaritada[latitude]",
@@ -889,25 +935,6 @@ const swagger_js = {
             name: "uy_manzil_xaritada[longitude]",
             in: "formData",
             type: "string",
-          },
-          {
-            name: "authorization",
-            in: "header",
-            description: "information.",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
-          {
-            name: "id",
-            in: "path",
-            required: true,
-            description: "User id information.",
-            schema: {
-              type: "integer",
-              format: "int",
-            },
           },
         ],
         responses: {

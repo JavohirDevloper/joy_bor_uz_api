@@ -39,14 +39,24 @@ const ElonSchema = new mongoose.Schema({
   },
   remont: {
     type: mongoose.SchemaTypes.String,
+    enum: ["Evrotamir", "O'rtacha", "Tamir talab", "Qora suvoq"],
     required: true,
   },
   price: {
     type: mongoose.SchemaTypes.String,
     required: true,
   },
-  qurilishda_ishlatilgan: {
+  devor_turi: {
     type: mongoose.SchemaTypes.String,
+    enum: [
+      "G'ishit",
+      "Paner",
+      "Monolit",
+      "Shlakoblok",
+      "Yogoch",
+      "Gazoblok",
+      "Sip panel",
+    ],
     required: true,
   },
   uy_manzil_xaritada: {
@@ -68,6 +78,12 @@ const ElonSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
+  qulayliklar: [
+    {
+      type: mongoose.SchemaTypes.String,
+      required: false,
+    },
+  ],
 });
 
 const Elon = mongoose.model("Elon", ElonSchema);

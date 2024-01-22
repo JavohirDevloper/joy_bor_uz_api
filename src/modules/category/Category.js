@@ -5,10 +5,12 @@ let CategorySChema = new mongoose.Schema({
     type: mongoose.SchemaTypes.String,
     required: true,
   },
-  categry_elons: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Elon",
-  },
+  categry_elons: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Elon",
+    },
+  ],
 });
 
 let Category = mongoose.model("Category", CategorySChema);
