@@ -7,7 +7,9 @@ const type = {
 
 const UserSchema = new mongoose.Schema(
   {
-    fullname: type,
+    fullname: {
+      type: mongoose.SchemaTypes.String,
+    },
     role: {
       type: mongoose.SchemaTypes.String,
       enum: ["user"],

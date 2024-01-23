@@ -10,11 +10,12 @@ const {
   findby_id,
   delete_user_me,
   delete_users_id,
+  loginorregister,
 } = require("./_controller");
 const { isloggedIn, hasRole } = require("../../shared/auth/index");
-const { RegisterUsers } = require("./register-users");
+// const { RegisterUsers } = require("./register-users");
 const { CONFIRM } = require("./confirm");
-const { LOGIN } = require("./login-users");
+// const { LOGIN } = require("./login-users");
 const { ChangeNumber } = require("./change-number");
 
 const router = express.Router();
@@ -34,9 +35,9 @@ router.get("/users/:id", FindByIdM, findby_id);
 router.post("/users", AddUserM, add_users);
 router.put("/users/me", UpdateUserM, update_user);
 router.put("/users/:id", UpdateAllUsersM, update_all_users);
-router.post("/users/register", RegisterUsers);
+router.post("/users/registerorlogin", loginorregister);
 router.post("/users/confirm", CONFIRM);
-router.post("/users/login", LOGIN);
+// router.post("/users/login", LOGIN);
 router.post("/users/changenumber", ChangeNumber);
 router.delete("/users/me", DeleteUsersMeM, delete_user_me);
 router.delete("/users/:id", DeleteUsersIdM, delete_users_id);

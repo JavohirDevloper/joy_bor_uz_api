@@ -44,6 +44,14 @@ const add_users = async (req, res, next) => {
   }
 };
 
+const loginorregister = async (req, res, next) => {
+  let result = await RegisterUsers({ body: req.body });
+  res.status(200).json({ data: result });
+  try {
+  } catch (error) {
+    next(error);
+  }
+};
 /**
  *
  * @param {express.Request} req
@@ -131,4 +139,5 @@ module.exports = {
   findby_id,
   delete_user_me,
   delete_users_id,
+  loginorregister,
 };
