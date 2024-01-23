@@ -9,7 +9,7 @@ const { FIndById } = require("./findbyid-category");
 const all_category = async (req, res, next) => {
   try {
     let result = await AllCategry();
-    res.result(200).json({ data: result });
+    res.status(200).json({ data: result });
   } catch (error) {
     next(error);
   }
@@ -57,5 +57,5 @@ module.exports = {
   add_category,
   edit_category,
   delete_category,
-  findbyid_category
+  findbyid_category,
 };
