@@ -979,17 +979,6 @@ const swagger_js = {
         tags: ["Category"],
         produces: ["application/json"],
         summary: "Hamma category olish olish",
-        parameters: [
-          {
-            name: "authorization",
-            in: "header",
-            description: "admin token",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
-        ],
         responses: {
           200: {
             description: "OK",
@@ -1042,15 +1031,6 @@ const swagger_js = {
         summary: "all categorys uchun!",
         description: "all categorys uchun",
         parameters: [
-          {
-            name: "authorization",
-            in: "header",
-            description: "user or admin token",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
           {
             name: "id",
             in: "path",
@@ -1108,17 +1088,7 @@ const swagger_js = {
         tags: ["Banner"],
         produces: ["application/json"],
         summary: "Hamma bannerlarni olish",
-        parameters: [
-          {
-            name: "authorization",
-            in: "header",
-            description: "admin token",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
-        ],
+
         responses: {
           200: {
             description: "OK",
@@ -1162,15 +1132,6 @@ const swagger_js = {
         summary: "bannerni id boyicha topish uchun",
         description: "bannerni id boyicha topish",
         parameters: [
-          {
-            name: "authorization",
-            in: "header",
-            description: "user or admin token",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
           {
             name: "id",
             in: "path",
