@@ -57,7 +57,7 @@ const all_banners = async (req, res, next) => {
 const find_by_id_banners = async (req, res, next) => {
   try {
     let result = await FindbyIdbanners({ parmams: req.params });
-    return result;
+    res.status(200).json({ data: result });
   } catch (error) {
     next(error);
   }
