@@ -15,10 +15,14 @@ app.use(express.json());
 const adminRoute = require("./modules/admin/_api");
 const UserRoute = require("./modules/users/_api");
 const ElonsRoute = require("./modules/elons/_api");
+const BannerRoute = require("./modules/banner/_api");
+const CategoryRoute = require("./modules/category/_api");
 
 app.use(adminRoute);
 app.use(UserRoute);
 app.use(ElonsRoute);
+app.use(BannerRoute);
+app.use(CategoryRoute);
 
 db();
 
