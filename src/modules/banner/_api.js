@@ -23,4 +23,4 @@ router.delete("/banner/un/:id", UnremoveBannerM, unremove_banner);
 router.get("/banner", all_banners);
 router.get("/banner/:id", find_by_id_banners);
 
-module.exports = { router };
+module.exports = router;
