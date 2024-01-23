@@ -617,7 +617,6 @@ const swagger_js = {
         consumes: ["multipart/form-data"],
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "User information.",
             required: true,
@@ -728,7 +727,6 @@ const swagger_js = {
             enum: ["sucses", "not_sucsus", "waiting", "no_faol"],
           },
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
@@ -752,7 +750,6 @@ const swagger_js = {
         summary: "Elonni id boyicha olish",
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
@@ -784,7 +781,6 @@ const swagger_js = {
         summary: "Elonni id boyicha olish",
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
