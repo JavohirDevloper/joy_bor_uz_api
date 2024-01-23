@@ -333,33 +333,33 @@ const swagger_js = {
         },
       },
     },
-    "/users/login": {
-      post: {
-        tags: ["User"],
-        summary:
-          "Userni login qilishi va keyin sms code tashtiqlashga otib yuboriladi",
-        description:
-          "Userni login qilishi va keyin sms code tashtiqlashga otib yuboriladi",
-        parameters: [
-          {
-            name: "obj",
-            in: "body",
-            description: "User information.",
-            required: true,
-            schema: {
-              $ref: "#/definitions/schemas/LoginUser",
-            },
-          },
-        ],
-        responses: {
-          200: {
-            description: "OK",
-            content: "application/json",
-          },
-        },
-      },
-    },
-    "/users/register": {
+    // "/users/login": {
+    //   post: {
+    //     tags: ["User"],
+    //     summary:
+    //       "Userni login qilishi va keyin sms code tashtiqlashga otib yuboriladi",
+    //     description:
+    //       "Userni login qilishi va keyin sms code tashtiqlashga otib yuboriladi",
+    //     parameters: [
+    //       {
+    //         name: "obj",
+    //         in: "body",
+    //         description: "User information.",
+    //         required: true,
+    //         schema: {
+    //           $ref: "#/definitions/schemas/LoginUser",
+    //         },
+    //       },
+    //     ],
+    //     responses: {
+    //       200: {
+    //         description: "OK",
+    //         content: "application/json",
+    //       },
+    //     },
+    //   },
+    // },
+    "/users/registerregisterorlogin": {
       post: {
         tags: ["User"],
         summary: "Userni login",
@@ -617,7 +617,6 @@ const swagger_js = {
         consumes: ["multipart/form-data"],
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "User information.",
             required: true,
@@ -728,7 +727,6 @@ const swagger_js = {
             enum: ["sucses", "not_sucsus", "waiting", "no_faol"],
           },
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
@@ -752,7 +750,6 @@ const swagger_js = {
         summary: "Elonni id boyicha olish",
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
@@ -784,7 +781,6 @@ const swagger_js = {
         summary: "Elonni id boyicha olish",
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "information.",
             required: true,
@@ -1390,16 +1386,12 @@ const swagger_js = {
       RegisterUser: {
         type: "object",
         properties: {
-          fullname: {
-            type: "string",
-            exsample: "eshmat toshmatovich",
-          },
           phone_number: {
             type: "string",
             exsample: "998999999999",
           },
         },
-        required: ["fullname", "phone_number"],
+        required: ["phone_number"],
       },
       CreateUser: {
         type: "object",
@@ -1450,8 +1442,12 @@ const swagger_js = {
             type: "string",
             exsample: "2345612",
           },
+          fullname: {
+            type: "string",
+            exsample: "eshmat toshmatovich",
+          },
         },
-        required: ["user_id", "code"],
+        required: ["user_id", "code", "fullname"],
       },
       ChangeNumberUser: {
         type: "object",

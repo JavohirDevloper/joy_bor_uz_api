@@ -5,10 +5,10 @@ const jwt = require("jsonwebtoken");
 
 const CONFIRM = async (req, res) => {
   try {
-    const { user_id, code } = req.body;
+    const { user_id, code, fullname } = req.body;
 
-    const verificationCode = await Verification.findOne({ user_id }).sort({
-      _id: -1,
+    const verificationCode = await Verification.findOne({
+      user_id,
     });
 
     if (!verificationCode) {
@@ -21,16 +21,16 @@ const CONFIRM = async (req, res) => {
       if (!user) {
         return res.status(404).json({ msg: "Bunaqa user bazada mavjud emas" });
       }
-
       const token = jwt.sign(
         { _id: user_id, role: user.role },
         config.jwt.secret,
         {
-          expiresIn: config.jwt.expirec_in,
+          expiresIn: config.jwt.expire_in,
         }
       );
 
       user.status = "active";
+      user.fullname = fullname;
       await user.save();
 
       res.status(200).json({
