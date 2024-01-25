@@ -33,6 +33,17 @@ const UserSchema = new mongoose.Schema(
       enum: ["active", "no_active"],
       default: "no_active",
     },
+    profilePic: {
+      type: String,
+      default:
+        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    },
+    contacts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     is_deleted: {
       type: mongoose.SchemaTypes.Boolean,
       default: false,

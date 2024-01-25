@@ -1246,6 +1246,132 @@ const swagger_js = {
         },
       },
     },
+    //chats
+    "/chat": {
+      get: {
+        tags: ["Chats"],
+        produces: ["application/json"],
+        summary: "Hamma uzini chatlarini olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      post: {
+        tags: ["Chats"],
+        summary: "chat yaratish one to one",
+        description: "chat yaratish one to one",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "obj",
+            in: "body",
+            description: "User information.",
+            required: true,
+            schema: {
+              $ref: "#/definitions/schemas/Createchat",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    //messages
+    "/message/{chatId}": {
+      get: {
+        tags: ["Messages"],
+        produces: ["application/json"],
+        summary: "chat id boyicha hamma messagelarni olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "chatId",
+            in: "path",
+            required: true,
+            description: "chat id sini kiriting",
+            schema: {
+              type: "uuid",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/message": {
+      post: {
+        tags: ["Messages"],
+        summary: "chat yaratish one to one",
+        description: "chat yaratish one to one",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "obj",
+            in: "body",
+            description: "User information.",
+            required: true,
+            schema: {
+              $ref: "#/definitions/schemas/CreateMessage",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
   },
   definitions: {
     schemas: {
@@ -1496,6 +1622,32 @@ const swagger_js = {
           },
         },
         required: ["process"],
+      },
+      //chats
+      Createchat: {
+        type: "object",
+        properties: {
+          userId: {
+            type: "string",
+            exsample: "yozishmoqchi bolgan odam idsi mongo idsi",
+          },
+        },
+        required: ["userId"],
+      },
+      //message
+      CreateMessage: {
+        type: "object",
+        properties: {
+          chatId: {
+            type: "string",
+            exsample: "chatni idsini kiri",
+          },
+          message: {
+            type: "string",
+            exsample: "bb world )",
+          },
+        },
+        required: ["chatId", "message"],
       },
     },
   },
