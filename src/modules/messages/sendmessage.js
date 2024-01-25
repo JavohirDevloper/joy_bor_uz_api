@@ -1,9 +1,9 @@
 const { messageModel } = require("./message");
 
-const sendMessage = async ({ body }) => {
+const sendMessage = async ({ body, user }) => {
   const { chatId, message } = body;
   let msg = await messageModel.create({
-    sender: req.rootUserId,
+    sender: user.id,
     message,
     chatId,
   });
