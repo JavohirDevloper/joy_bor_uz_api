@@ -18,7 +18,6 @@ const all_elons = async (req, res, next) => {
 
 const add_elons = async (req, res, next) => {
   try {
-    console.log(req.body);
     let result = await Add_Elons({
       body: req.body,
       user: req.user,
