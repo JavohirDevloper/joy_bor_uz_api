@@ -2,18 +2,23 @@ const { NotFoundError, BadRequestError } = require("../../shared/errors");
 const User = require("../users/User");
 
 const LikedElons = async ({ user, params }) => {
-  let findUser = await User.findById(user.id);
+  let findUser = await User.findById(user._id);
 
   if (!findUser) {
-    throw new NotFoundError("not found User");
+    throw new NotFoundError("User not found");
   }
 
-  if (!findUser.saved_elons.includes(params.id)) {
-    user.saved_elons.push(params.id);
-    await user.save();
-  }
+  const elonIndex = findUser.saved_elons.indexOf(params.id);
 
-  return "aded";
+  if (elonIndex === -1) {
+    findUser.saved_elons.push(params.id);
+    await findUser.save();
+    return "added";
+  } else {
+    findUser.saved_elons.splice(elonIndex, 1);
+    await findUser.save();
+    return "removed";
+  }
 };
 
-module.exports = {LikedElons}
+module.exports = { LikedElons };
