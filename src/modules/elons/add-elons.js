@@ -2,7 +2,6 @@ const { NotFoundError } = require("../../shared/errors");
 const { Category } = require("../category/Category");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
-const { join } = require("path");
 
 const Add_Elons = async ({ body, user, files }) => {
   let { title, description, category, ...data } = body;
