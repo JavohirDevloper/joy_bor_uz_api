@@ -25,7 +25,7 @@ let LikedElonsM = [isloggedIn, hasRole([isloggedIn, hasRole("user")])];
 let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
 
 router.post("/elons", upload.array("images", 5), AddElonM, add_elons);
-router.get("/elons", AllElonsM, all_elons);
+router.get("/elons", all_elons);
 router.put("/elonsadmin/:id", UpdateElonsAllM, update_all_elons);
 router.put("/elons/:id", UpdateElonsM, update_elons);
 router.delete("/elons/:id", DeleteElonsM, delete_elons);
