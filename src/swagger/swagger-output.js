@@ -359,7 +359,7 @@ const swagger_js = {
     //     },
     //   },
     // },
-    "/users/registerregisterorlogin": {
+    "/users/registerorlogin": {
       post: {
         tags: ["User"],
         summary: "Userni login",
