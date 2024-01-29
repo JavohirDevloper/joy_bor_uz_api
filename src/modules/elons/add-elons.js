@@ -6,7 +6,8 @@ const { join } = require("path");
 
 const Add_Elons = async ({ body, user, files }) => {
   let { title, description, category, ...data } = body;
-  let findUser = await User.findById({ _id: user.id });
+  console.log(body);
+  let findUser = await User.findById({ _id: user._id });
   let findCategory = await Category.findById({ _id: category });
 
   if (!findUser) {
@@ -18,7 +19,7 @@ const Add_Elons = async ({ body, user, files }) => {
   let adding_elons = await Elon.create({
     title,
     description,
-    images: "/public/" + files.map((file) => file.filename),
+    images: ["/public/" + files.map((file) => file.filename)],
     elon_user: user.id,
     ...data,
   });

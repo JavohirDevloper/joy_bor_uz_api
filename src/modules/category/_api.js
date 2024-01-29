@@ -22,7 +22,7 @@ let FIndByIdCategoryM = [isMongoId];
 
 router.get("/category", all_category);
 router.get("/category/:id", FIndByIdCategoryM, findbyid_category);
-router.post("/category", CreateCategoryM, add_category);
+router.post("/category", add_category);
 router.put("/category/:id", EditCategoryM, edit_category);
 router.delete("/category/:id", DeleteCategoryM, delete_category);
 

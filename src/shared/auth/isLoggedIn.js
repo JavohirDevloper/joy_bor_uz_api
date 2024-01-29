@@ -16,13 +16,13 @@ const isLoggedIn = async (req, res, next) => {
     if (!token) {
       throw new UnauthorizedError("Unauthorized.");
     }
-    
+
     const decoded = jwt.verify(token, config.jwt.secret, {
       ignoreExpiration: false,
     });
     console.log(decoded);
 
-    req.user = decoded.user;
+    req.user = decoded;
 
     next();
   } catch (error) {
