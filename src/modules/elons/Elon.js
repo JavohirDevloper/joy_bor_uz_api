@@ -46,6 +46,11 @@ const ElonSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.String,
     required: true,
   },
+  price_type: {
+    type: mongoose.SchemaTypes.String,
+    enum: ["UZS", "USD"],
+    default: "UZS",
+  },
   devor_turi: {
     type: mongoose.SchemaTypes.String,
     enum: [

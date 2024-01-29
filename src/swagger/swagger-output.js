@@ -642,17 +642,17 @@ const swagger_js = {
           {
             name: "honalar_soni",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "uy_maydoni",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "nechinchi_qavat",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "uy_manzili",
@@ -662,7 +662,7 @@ const swagger_js = {
           {
             name: "category",
             in: "formData",
-            type: "string",
+            type: "category id",
           },
           {
             name: "remont",
@@ -673,7 +673,12 @@ const swagger_js = {
           {
             name: "price",
             in: "formData",
-            type: "string",
+            type: "number",
+          },
+          {
+            name: "price_type",
+            in: "formData",
+            enum: ["UZS", "USD"],
           },
           {
             name: "devor_turi",
@@ -724,7 +729,7 @@ const swagger_js = {
             name: "proses",
             in: "formData",
             type: "string",
-            enum: ["sucses", "not_sucsus", "waiting", "no_faol"],
+            enum: ["sucses", "waiting", "no_faol"],
           },
           {
             in: "header",
@@ -743,7 +748,7 @@ const swagger_js = {
         },
       },
     },
-    "elons{id}": {
+    "elons/{id}": {
       get: {
         tags: ["Elons"],
         produces: ["application/json"],
@@ -806,6 +811,123 @@ const swagger_js = {
           },
         },
       },
+      put: {
+        tags: ["Elons"],
+        summary: "elonlarni update qilish",
+        description: "elonlarni yaratish",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            in: "header",
+            description: "User information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+          {
+            name: "title",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "description",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "images",
+            in: "formData",
+            type: "file",
+          },
+          {
+            name: "honalar_soni",
+            in: "formData",
+            type: "number",
+          },
+          {
+            name: "uy_maydoni",
+            in: "formData",
+            type: "number",
+          },
+          {
+            name: "nechinchi_qavat",
+            in: "formData",
+            type: "number",
+          },
+          {
+            name: "uy_manzili",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "category",
+            in: "formData",
+            type: "category id",
+          },
+          {
+            name: "remont",
+            in: "formData",
+            type: "string",
+            enum: ["Evrotamir", "O'rtacha", "Tamir talab", "Qora suvoq"],
+          },
+          {
+            name: "price",
+            in: "formData",
+            type: "number",
+          },
+          {
+            name: "price_type",
+            in: "formData",
+            enum: ["UZS", "USD"],
+          },
+          {
+            name: "devor_turi",
+            in: "formData",
+            type: "string",
+            enum: [
+              "G'ishit",
+              "Paner",
+              "Monolit",
+              "Shlakoblok",
+              "Yogoch",
+              "Gazoblok",
+              "Sip panel",
+            ],
+          },
+          {
+            name: "uy_manzil_xaritada[latitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "uy_manzil_xaritada[longitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "qulayliklar",
+            in: "formData",
+            type: "string",
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
     },
     "/like/elons/{id}": {
       post: {
@@ -849,12 +971,21 @@ const swagger_js = {
         consumes: ["multipart/form-data"],
         parameters: [
           {
-            name: "authorization",
             in: "header",
             description: "User information.",
             required: true,
             schema: {
               type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
             },
           },
           {
@@ -875,17 +1006,17 @@ const swagger_js = {
           {
             name: "honalar_soni",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "uy_maydoni",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "nechinchi_qavat",
             in: "formData",
-            type: "string",
+            type: "number",
           },
           {
             name: "uy_manzili",
@@ -895,7 +1026,7 @@ const swagger_js = {
           {
             name: "category",
             in: "formData",
-            type: "string",
+            type: "category id",
           },
           {
             name: "remont",
@@ -906,7 +1037,12 @@ const swagger_js = {
           {
             name: "price",
             in: "formData",
-            type: "string",
+            type: "number",
+          },
+          {
+            name: "price_type",
+            in: "formData",
+            enum: ["UZS", "USD"],
           },
           {
             name: "devor_turi",
@@ -929,6 +1065,11 @@ const swagger_js = {
           },
           {
             name: "uy_manzil_xaritada[longitude]",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "qulayliklar",
             in: "formData",
             type: "string",
           },
