@@ -2,7 +2,7 @@ const { AddCategory } = require("./add-category");
 const { AllCategry } = require("./all-category");
 const httpValidator = require("../../shared/http-validator");
 const { EditCategory } = require("./edit-category");
-const { UpdateCategorySchema } = require("./schema");
+const { UpdateCategorySchema, AddCategorySchemas } = require("./schema");
 const { DeleteCategory } = require("./delete-category");
 const { FIndById } = require("./findbyid-category");
 
@@ -17,7 +17,7 @@ const all_category = async (req, res, next) => {
 
 const add_category = async (req, res, next) => {
   try {
-    httpValidator({ body: req.body }, AddCategory);
+    httpValidator({ body: req.body }, AddCategorySchemas);
     let result = await AddCategory({ body: req.body });
     res.status(200).json({ data: result });
   } catch (error) {

@@ -13,6 +13,7 @@ const {
 const { hasRole, isloggedIn } = require("../../shared/auth");
 const { LikedElons } = require("./liked-elons");
 let router = express.Router();
+const { upload } = require("../../shared/config/multer.config");
 
 let AddElonM = [isloggedIn, hasRole(["user"])];
 let UpdateElonsAllM = [isloggedIn, hasRole(["amin", "super_admin"])];
@@ -23,8 +24,13 @@ let ChangeProsesM = [isloggedIn, hasRole(["admin", "super_admin"])];
 let LikedElonsM = [isloggedIn, hasRole([isloggedIn, hasRole("user")])];
 let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
 
+<<<<<<< HEAD
 router.post("/elons", AddElonM, add_elons);
 router.get("/elons", all_elons);
+=======
+router.post("/elons", upload.array("images", 5), AddElonM, add_elons);
+router.get("/elons", AllElonsM, all_elons);
+>>>>>>> ce6eacef58608f0237be2bf17de783fe9f8731ed
 router.put("/elonsadmin/:id", UpdateElonsAllM, update_all_elons);
 router.put("/elons/:id", UpdateElonsM, update_elons);
 router.delete("/elons/:id", DeleteElonsM, delete_elons);
