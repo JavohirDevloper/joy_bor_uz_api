@@ -5,21 +5,19 @@ const { Elon } = require("./Elon");
 
 const Add_Elons = async ({ body, user, files }) => {
   let { title, description, category, ...data } = body;
-  console.log(body);
-  let findUser = await User.findById({ _id: user._id });
-  let findCategory = await Category.findById({ _id: category });
 
-  if (!findUser) {
-    throw new NotFoundError("user not found!");
-  }
-  if (!findCategory) {
-    throw new NotFoundError("category not found!");
-  }
+  let findUser = await User.findById({ _id: user._id });
+
+  let findCategory = await Category.findById(category);
+
+  let imagePaths = files.map((file) => "/public/" + file.filename);
+
   let adding_elons = await Elon.create({
     title,
     description,
-    images: ["/public/" + files.map((file) => file.filename)],
-    elon_user: user.id,
+    images: imagePaths,
+    elon_user: user._id,
+    category,
     ...data,
   });
 
