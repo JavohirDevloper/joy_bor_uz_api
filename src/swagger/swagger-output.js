@@ -973,6 +973,65 @@ const swagger_js = {
         },
       },
     },
+    "/elons/waiting": {
+      get: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary:
+          "Hamma adminga jonatilgan elonlarni olish notification uchun ishlatsa boladi",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "Admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/elons/resend/{id}": {
+      get: {
+        tags: ["Elons"],
+        produces: ["application/json"],
+        summary: "Elonni qayta adminga jonatish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "information.",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "User id information.",
+            schema: {
+              type: "integer",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
     //category
     "/category": {
       get: {

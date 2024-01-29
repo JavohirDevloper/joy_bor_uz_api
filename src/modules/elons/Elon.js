@@ -71,7 +71,7 @@ const ElonSchema = new mongoose.Schema({
   },
   elon_holati: {
     type: mongoose.SchemaTypes.String,
-    enum: ["sucses", "not_sucsus", "waiting", "no_faol"],
+    enum: ["sucses", "waiting", "no_faol"],
     default: "waiting",
   },
   elon_user: {

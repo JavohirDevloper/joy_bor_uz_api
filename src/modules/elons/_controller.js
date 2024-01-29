@@ -6,6 +6,8 @@ const { DeleteElonsAll } = require("./delete-elons-all");
 const { Update_Elons } = require("./update-elon");
 const { Change_Elon_Proses } = require("./change-elon-proses");
 const { FindByIdElons } = require("./findbyidelons");
+const { FindWaitingElons } = require("./waiting-elons");
+const { ResentElon } = require("./resend-status-elon");
 
 const all_elons = async (req, res, next) => {
   let result = await AllElons();
@@ -31,7 +33,11 @@ const add_elons = async (req, res, next) => {
 
 const update_all_elons = async (req, res, next) => {
   try {
-    let result = await UpdateAll_Elons({ params: req.params, body: req.body });
+    let result = await UpdateAll_Elons({
+      params: req.params,
+      body: req.body,
+      files: req.files,
+    });
     res.status(200).json({ data: result });
   } catch (error) {
     next(error);
@@ -44,6 +50,7 @@ const update_elons = async (req, res, next) => {
       params: req.params,
       user: req.user,
       body: req.body,
+      files: req.files,
     });
     res.status(200).json({ data: result });
   } catch (error) {
@@ -80,14 +87,34 @@ const change_proses_elon = async (req, res, next) => {
     next(error);
   }
 };
+
 const find_by_id_elons = async (req, res, next) => {
   try {
     let result = await FindByIdElons({ params: req.params });
-    res.status(result);
+    res.status(200).json(result);
   } catch (error) {
     next(error);
   }
 };
+
+const find_waiting_elons = async (req, res, next) => {
+  try {
+    let result = await FindWaitingElons();
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const resend_elon = async (req, res, next) => {
+  try {
+    let result = await ResentElon({ params: req.params });
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   all_elons,
   add_elons,
@@ -97,4 +124,6 @@ module.exports = {
   update_elons,
   change_proses_elon,
   find_by_id_elons,
+  find_waiting_elons,
+  resend_elon,
 };

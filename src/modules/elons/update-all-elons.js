@@ -1,12 +1,13 @@
 const { BadRequestError } = require("../../shared/errors");
 const { Elon } = require("./Elon");
 
-const UpdateAll_Elons = async ({ params, body }) => {
+const UpdateAll_Elons = async ({ params, body, files }) => {
   let findElons = Elon.findById({ _id: params.id });
 
   if (!findElons) {
     throw new BadRequestError("not found elons");
   }
+  let imagePaths = files.map((file) => "/public/" + file.filename);
 
   let UpdateObj = {
     title: body.title ? body.title : findElons.title,
@@ -29,6 +30,7 @@ const UpdateAll_Elons = async ({ params, body }) => {
       ? body.uy_manzil_xaritada
       : findElons.uy_manzil_xaritada,
     elon_holati: body.elon_holati ? body.elon_holati : findElons.elon_holati,
+    images: imagePaths ? imagePaths : findElons.images,
   };
 
   let update_elons = await Elon.findByIdAndUpdate(

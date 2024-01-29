@@ -4,7 +4,7 @@ const Elon = require("./Elon");
 const FindByIdElons = async ({ params }) => {
   let existingelons = await Elon.findById({
     _id: params.id,
-    status: "active",
+    elon_holati: sucses,
   }).populate([{ path: "elon_user" }]);
 
   if (!existingelons) {

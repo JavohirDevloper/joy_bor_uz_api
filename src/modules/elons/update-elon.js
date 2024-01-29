@@ -2,7 +2,7 @@ const { BadRequestError, NotFoundError } = require("../../shared/errors");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Update_Elons = async ({ params, body, user }) => {
+const Update_Elons = async ({ params, body, user, files }) => {
   let findElons = Elon.findById({ _id: params.id });
 
   if (!findElons) {
@@ -16,9 +16,11 @@ const Update_Elons = async ({ params, body, user }) => {
 
   if (!FindEUser.elons.includes(params.id)) {
     throw new BadRequestError(
-      "bu sizning eloningiz emas uzir buni ochira olmaysiz"
+      "bu sizning eloningiz emas uzir buni yangi olmaysiz"
     );
   }
+  let imagePaths = files.map((file) => "/public/" + file.filename);
+
   let UpdateObj = {
     title: body.title ? body.title : findElons.title,
     description: body.description ? body.description : findElons.description,
@@ -41,6 +43,7 @@ const Update_Elons = async ({ params, body, user }) => {
       ? body.uy_manzil_xaritada
       : findElons.uy_manzil_xaritada,
     elon_holati: body.elon_holati ? body.elon_holati : findElons.elon_holati,
+    images: imagePaths ? imagePaths : findElons.images,
   };
 
   let update_elons = await Elon.findByIdAndUpdate(
