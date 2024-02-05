@@ -81,7 +81,6 @@ const findbyid_notification_elon = async (req, res, next) => {
 const change_notification_status = async (req, res, next) => {
   try {
     let result = await ChangeNotificationStatus({
-      body: req.body,
       params: req.params,
     });
     res.status(201).json(result);

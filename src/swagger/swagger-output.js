@@ -1582,6 +1582,228 @@ const swagger_js = {
         },
       },
     },
+    //notifications
+    "/notifications/elon": {
+      post: {
+        tags: ["Notifications"],
+        summary: "Notification yaratish admin uchun",
+        description: "Notification yaratish admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "Admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "obj",
+            in: "body",
+            description: "User information.",
+            required: true,
+            schema: {
+              $ref: "#/definitions/schemas/CreateNotification",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/notifications/elons": {
+      get: {
+        tags: ["Notifications"],
+        produces: ["application/json"],
+        summary: "Hamma notificationlarni olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "Admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/notification/me": {
+      get: {
+        tags: ["Notifications"],
+        produces: ["application/json"],
+        summary: "Hamma uzini notificationlarni olish",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "User token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/notification/{id}": {
+      delete: {
+        tags: ["Notifications"],
+        summary: "notification delete qilish admin uchun",
+        description: "notification delete qilish admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "notification id",
+            schema: {
+              type: "ObjectId",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      get: {
+        tags: ["Notifications"],
+        summary: "notification get qilish admin uchun",
+        description: "notification get qilish admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "notification id",
+            schema: {
+              type: "ObjectId",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+      put: {
+        tags: ["Notifications"],
+        summary: "notification get qilish admin uchun",
+        description: "notification get qilish admin uchun",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "admin token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "notification id",
+            schema: {
+              type: "ObjectId",
+              format: "int",
+            },
+          },
+          {
+            name: "obj",
+            in: "body",
+            description: "notification update inputs )",
+            schema: {
+              $ref: "#/definitions/schemas/UpdateNotification",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/notification/change/{id}": {
+      patch: {
+        tags: ["Notifications"],
+        summary: "notification status update qilish ",
+        description: "notification status update qilish ",
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "user token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "notification id",
+            schema: {
+              type: "ObjectId",
+              format: "int",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
   },
   definitions: {
     schemas: {
@@ -1834,6 +2056,43 @@ const swagger_js = {
           },
         },
         required: ["chatId", "message"],
+      },
+      //notifications
+      CreateNotification: {
+        type: "object",
+        properties: {
+          notfication_user: {
+            type: "string",
+            exsample: "user idsini kiri",
+          },
+          elon: {
+            type: "string",
+            exsample: "elon idsini kiri",
+          },
+          text: {
+            type: "string",
+            exsample: "elon idsini kiri",
+          },
+        },
+        required: ["notfication_user", "elon", "text"],
+      },
+      UpdateNotification: {
+        type: "object",
+        properties: {
+          notfication_user: {
+            type: "string",
+            exsample: "user idsini kiri",
+          },
+          elon: {
+            type: "string",
+            exsample: "elon idsini kiri",
+          },
+          text: {
+            type: "string",
+            exsample: "elon idsini kiri",
+          },
+        },
+        // required: ["notfication_user", "elon", "text"],
       },
     },
   },

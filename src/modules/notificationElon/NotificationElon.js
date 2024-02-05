@@ -16,7 +16,6 @@ let NotficationElonSchema = mongoose.Schema(
     },
     notificationCreator: {
       type: mongoose.SchemaTypes.ObjectId,
-      required: true,
     },
     read_status: {
       type: mongoose.SchemaTypes.Boolean,
