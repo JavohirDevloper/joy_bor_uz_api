@@ -20,6 +20,7 @@ const BannerRoute = require("./modules/banner/_api");
 const CategoryRoute = require("./modules/category/_api");
 const ChatRoute = require("./modules/chat/_api");
 const MessageRoute = require("./modules/messages/_api");
+const NotficationElonRoute = require("./modules/notificationElon/_api");
 
 app.use(adminRoute);
 app.use(UserRoute);
@@ -28,6 +29,7 @@ app.use(BannerRoute);
 app.use(CategoryRoute);
 app.use(ChatRoute);
 app.use(MessageRoute);
+app.use(NotficationElonRoute);
 
 db();
 

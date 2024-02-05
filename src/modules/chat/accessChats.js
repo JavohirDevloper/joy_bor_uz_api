@@ -2,7 +2,7 @@ const Chat = require("./chat");
 
 const accessChats = async ({ body, user, res }) => {
   const { userId } = body;
-
+  
   if (!userId) {
     res.send({ message: "Provide User's Id" });
     return;
