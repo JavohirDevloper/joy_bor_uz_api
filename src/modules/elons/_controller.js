@@ -10,7 +10,7 @@ const { FindWaitingElons } = require("./waiting-elons");
 const { ResentElon } = require("./resend-status-elon");
 
 const all_elons = async (req, res, next) => {
-  let result = await AllElons();
+  let result = await AllElons({ query: req.query });
   await res.status(200).json({ data: result });
   try {
   } catch (error) {
