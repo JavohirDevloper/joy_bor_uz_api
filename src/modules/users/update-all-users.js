@@ -20,6 +20,9 @@ const UpdateUserAll = async ({ body, params }) => {
     phone_number: body.phone_number
       ? body.phone_number
       : existingUser.phone_number,
+    profilePic: file.filename
+      ? "/public/" + file.filename
+      : existingUser.profilePic,
   };
 
   let editUser = await User.findByIdAndUpdate(params.id, updateUserObj, {

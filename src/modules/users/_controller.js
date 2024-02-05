@@ -62,7 +62,11 @@ const loginorregister = async (req, res, next) => {
 const update_user = async (req, res, next) => {
   try {
     httpValidator({ body: req.body }, UpdateUserSchema);
-    let result = await UpdateUser({ body: req.body, user: req.user });
+    let result = await UpdateUser({
+      body: req.body,
+      user: req.user,
+      file: req.file,
+    });
     res.status(200).json({ data: result });
   } catch (error) {
     next(error);

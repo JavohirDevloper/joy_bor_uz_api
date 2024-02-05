@@ -1,11 +1,13 @@
+const { chatModel } = require("../chat/chat");
 const { messageModel } = require("./message");
 
 const sendMessage = async ({ body, user }) => {
-  const { chatId, message } = body;
+  const { chatId, message, blogo_id, ...rest } = body;
   let msg = await messageModel.create({
     sender: user.id,
     message,
     chatId,
+    ...rest,
   });
   msg = await (
     await msg.populate("sender", "fullname profilePic phone_number")

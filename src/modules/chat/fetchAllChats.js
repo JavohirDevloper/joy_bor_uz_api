@@ -1,3 +1,4 @@
+const User = require("../users/User");
 const { chatModel } = require("./chat");
 
 const fetchAllChats = async ({ user }) => {
@@ -5,14 +6,15 @@ const fetchAllChats = async ({ user }) => {
     .find({
       users: { $elemMatch: { $eq: user.id } },
     })
-    .populate("users")
-    .populate("latestMessage")
-    .populate("groupAdmin")
-    .sort({ updatedAt: -1 });
-  const finalChats = await user.populate(chats, {
-    path: "latestMessage.sender",
-    select: "name email profilePic",
-  });
+    .populate([
+      { path: "users" },
+      { path: "latestMessage" },
+      { path: "groupAdmin" },
+    ]);
+
+  const finalChats = await User.populate(chats, [
+    { path: "latestMessage.sender" },
+  ]);
   return finalChats;
 };
 

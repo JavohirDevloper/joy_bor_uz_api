@@ -5,10 +5,8 @@ const storage = multer.diskStorage({
     cb(null, "public/");
   },
   filename: function (req, file, cb) {
-    const trimmedFileName = file.originalname
-      .replace(/\s+/g, "-")
-      .toLowerCase();
-    cb(null, Date.now() + "-" + trimmedFileName);
+    const trimmedFileName = file.originalname.replace(/\s+/g, "").toLowerCase();
+    cb(null, Date.now() + "_" + trimmedFileName);
   },
 });
 
