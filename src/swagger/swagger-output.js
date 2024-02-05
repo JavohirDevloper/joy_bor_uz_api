@@ -410,16 +410,19 @@ const swagger_js = {
       put: {
         tags: ["User"],
         summary: "Userni update qilish",
-        description: "faqat fullname update boladi",
+        description: " fullname va image update boladi",
+        consumes: ["multipart/form-data"],
+
         parameters: [
           {
-            name: "obj",
-            in: "body",
-            description: "User information.",
-            required: true,
-            schema: {
-              $ref: "#/definitions/schemas/UpdateUsername",
-            },
+            name: "avatar",
+            in: "formData",
+            type: "file",
+          },
+          {
+            name: "username",
+            in: "formData",
+            type: "string",
           },
         ],
         responses: {
@@ -456,7 +459,8 @@ const swagger_js = {
       put: {
         tags: ["User"],
         summary: "Userni update qilish",
-        description: "faqat fullname update boladi",
+        description: "update qilish hammasini",
+        consumes: ["multipart/form-data"],
         parameters: [
           {
             name: "id",
@@ -468,13 +472,19 @@ const swagger_js = {
             },
           },
           {
-            name: "obj",
-            in: "body",
-            description: "User information.",
-            required: true,
-            schema: {
-              $ref: "#/definitions/schemas/UpdateUser",
-            },
+            name: "avatar",
+            in: "formData",
+            type: "file",
+          },
+          {
+            name: "username",
+            in: "formData",
+            type: "string",
+          },
+          {
+            name: "phone_number",
+            in: "formData",
+            type: "int",
           },
         ],
         responses: {
@@ -1690,30 +1700,6 @@ const swagger_js = {
           phone_number: {
             type: "string",
             exsample: "998999999999",
-          },
-        },
-        required: ["fullname", "phone_number"],
-      },
-      UpdateUser: {
-        type: "object",
-        properties: {
-          fullname: {
-            type: "string",
-            exsample: "eshmat toshmatovich",
-          },
-          phone_number: {
-            type: "string",
-            exsample: "998999999999",
-          },
-        },
-        required: ["fullname", "phone_number"],
-      },
-      UpdateUsername: {
-        type: "object",
-        properties: {
-          fullname: {
-            type: "string",
-            exsample: "eshmat toshmatovich",
           },
         },
         required: ["fullname", "phone_number"],
