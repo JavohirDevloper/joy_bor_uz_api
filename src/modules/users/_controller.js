@@ -3,14 +3,13 @@ const { AllUsers } = require("./all-users");
 const { AddUser } = require("./add-users");
 const { AddUserSchemas, UpdateUserSchema } = require("./schema");
 const httpValidator = require("../../shared/http-validator");
-const { UpdateUser } = require("./update-users");
 const { RegisterUsers } = require("./register-users");
-const { LoginUsers } = require("./login-users");
 const { UpdateUserAll } = require("./update-all-users");
 const { FindUsers } = require("./find-users-my");
 const { FindByIdUsers } = require("./findbyid-users");
 const { DeleteUsersAll } = require("./delete-all-users");
 const { DeleteUsersById } = require("./delete-id-users");
+const UpdateUserMe = require("./update-users");
 /**
  *
  * @param {express.Request} req
@@ -62,9 +61,9 @@ const loginorregister = async (req, res, next) => {
 const update_user = async (req, res, next) => {
   try {
     httpValidator({ body: req.body }, UpdateUserSchema);
-    let result = await UpdateUser({
+    let result = await UpdateUserMe({
       body: req.body,
-      user: req.user,
+      params: req.params,
       file: req.file,
     });
     res.status(200).json({ data: result });

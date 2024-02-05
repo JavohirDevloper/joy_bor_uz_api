@@ -1,31 +1,27 @@
-const User = require("./User");
-const { NotFoundError, BadRequestError } = require("../../shared/errors");
-
-const UpdateUser = async ({ body, user, file }) => {
-  let existingUser = await User.findById({ _id: user.id, is_deleted: false });
+const UpdateUserMe = async ({ body, params, file }) => {
+  let existingUser = await User.findById({ _id: params.id, is_deleted: false });
   if (!existingUser) {
     throw new NotFoundError("user topilmadi!");
   }
 
-  let existingfullname = await User.findOne({
-    fullname: body.fullname,
+  let existingPhoneNumber = await User.findOne({
+    phone_number: body.phone_number,
   });
 
-  if (existingfullname) {
-    throw new BadRequestError("fullname already exted");
+  if (existingPhoneNumber) {
+    throw new BadRequestError("phone_number already existed!");
   }
 
   let updateUserObj = {
-    fullname: body.fullname ? body.fullname : existingUser.fullname,
-    profilePic: file.filename
-      ? "/public/" + file.filename
-      : existingUser.profilePic,
+    fullname: body.fullname || existingUser.fullname,
+    phone_number: body.phone_number || existingUser.phone_number,
+    profilePic: file ? "/public/" + file.filename : existingUser.profilePic,
   };
 
-  let editUser = await User.findByIdAndUpdate(user.id, updateUserObj, {
+  let editedUser = await User.findByIdAndUpdate(params.id, updateUserObj, {
     new: true,
   });
-  return editUser;
+  return editedUser;
 };
 
-module.exports = { UpdateUser };
+module.exports = UpdateUserMe;
