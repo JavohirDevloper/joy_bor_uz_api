@@ -15,7 +15,6 @@ const AllElons = async (req) => {
 
   const skip = (page - 1) * pageSize;
 
-  // Find documents with pagination using skip and limit
   let all_elons = await Elon.find(filter)
     .populate([
       {
