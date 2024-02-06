@@ -1583,7 +1583,7 @@ const swagger_js = {
       },
     },
     //notifications
-    "/notifications/elon": {
+    "/notification/elon": {
       post: {
         tags: ["Notifications"],
         summary: "Notification yaratish admin uchun",
@@ -1616,7 +1616,7 @@ const swagger_js = {
         },
       },
     },
-    "/notifications/elons": {
+    "/notification/elons": {
       get: {
         tags: ["Notifications"],
         produces: ["application/json"],
