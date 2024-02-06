@@ -24,7 +24,7 @@ const loginAdmin = async ({ body }) => {
     role: existing.role,
   };
 
-  const token = jwt.sign({ user: decode }, config.jwt.secret);
+  const token = jwt.sign({ decode }, config.jwt.secret);
 
   return token;
 };
