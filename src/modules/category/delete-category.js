@@ -10,7 +10,6 @@ const DeleteCategory = async ({ params }) => {
 
   let DeleteCategory = await Category.findByIdAndDelete(
     { _id: params.id },
-    { new: true }
   );
 
   return DeleteCategory;

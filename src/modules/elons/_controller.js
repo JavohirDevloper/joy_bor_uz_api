@@ -10,7 +10,7 @@ const { FindWaitingElons } = require("./waiting-elons");
 const { ResentElon } = require("./resend-status-elon");
 
 const all_elons = async (req, res, next) => {
-  let result = await AllElons({ query: req.query });
+  let result = await AllElons({ query: req.que,ryreq:req });
   await res.status(200).json({ data: result });
   try {
   } catch (error) {
@@ -23,7 +23,6 @@ const add_elons = async (req, res, next) => {
     let result = await Add_Elons({
       body: req.body,
       user: req.user,
-      files: req.files,
     });
     res.status(200).json({ data: result });
   } catch (error) {
@@ -36,7 +35,6 @@ const update_all_elons = async (req, res, next) => {
     let result = await UpdateAll_Elons({
       params: req.params,
       body: req.body,
-      files: req.files,
     });
     res.status(200).json({ data: result });
   } catch (error) {

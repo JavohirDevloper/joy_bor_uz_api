@@ -1,4 +1,6 @@
 const config = require("../shared/config/index");
+let host = "back.joy-bor.uz"
+let schemes = ["https"]
 
 const swagger_js = {
   swagger: "2.0",
@@ -623,12 +625,13 @@ const swagger_js = {
       post: {
         tags: ["Elons"],
         summary: "elonlarni yaratish admin uchun!",
-        description: "elonlarni yaratish admin uchun",
+        description: "elonlarni update imagelarni uploadga berib yuborasiz keyin sizga array qaytadi shuni images key bilan berib yuborasizs",
         consumes: ["multipart/form-data"],
         parameters: [
           {
+            name: "authorization",
             in: "header",
-            description: "User information.",
+            description: "admin faqat",
             required: true,
             schema: {
               type: "string",
@@ -645,9 +648,9 @@ const swagger_js = {
             type: "string",
           },
           {
-            name: "images",
+            name: "files",
             in: "formData",
-            type: "file",
+            type: "string",
           },
           {
             name: "honalar_soni",
@@ -824,7 +827,7 @@ const swagger_js = {
       put: {
         tags: ["Elons"],
         summary: "elonlarni update qilish",
-        description: "elonlarni yaratish",
+        description: "elonlarni update imagelarni uploadga berib yuborasiz keyin sizga array qaytadi shuni images key bilan berib yuborasizs",
         consumes: ["multipart/form-data"],
         parameters: [
           {
@@ -856,9 +859,9 @@ const swagger_js = {
             type: "string",
           },
           {
-            name: "images",
+            name: "files",
             in: "formData",
-            type: "file",
+            type: "string",
           },
           {
             name: "honalar_soni",
@@ -977,7 +980,7 @@ const swagger_js = {
       put: {
         tags: ["Elons"],
         summary: "elonlarni update qilish admin uchun!",
-        description: "elonlarni update qilish admin uchun",
+        description: "elonlarni update qilish admin uchun bunda ham shunaqa array berasiz imagelarni",
         consumes: ["multipart/form-data"],
         parameters: [
           {
@@ -1009,9 +1012,9 @@ const swagger_js = {
             type: "string",
           },
           {
-            name: "images",
+            name: "files",
             in: "formData",
-            type: "file",
+            type: "string",
           },
           {
             name: "honalar_soni",
@@ -1794,6 +1797,67 @@ const swagger_js = {
               type: "ObjectId",
               format: "int",
             },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    //upload
+    "/upload/elons": {
+      post: {
+        tags: ["Upload"],
+        summary: "upload yaratish elonnning rasimlarini",
+        description: "upload qilish imagelar 6 ta berasiz sizga  files arrayda filnomari beradi beradi uni elonni images keyiga berib yuborasiz ",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "user token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "images",
+            in: "formData",
+            type: "file",
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            content: "application/json",
+          },
+        },
+      },
+    },
+    "/upload/image": {
+      post: {
+        tags: ["Upload"],
+        summary: "upload yaratish admin user banner uchun rasmlarni bersaiz sizga filename qaytaradi",
+        description: "upload qilish image",
+        consumes: ["multipart/form-data"],
+        parameters: [
+          {
+            name: "authorization",
+            in: "header",
+            description: "user token",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "image",
+            in: "formData",
+            type: "file",
           },
         ],
         responses: {

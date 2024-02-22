@@ -13,9 +13,7 @@ const {
   loginorregister,
 } = require("./_controller");
 const { isloggedIn, hasRole } = require("../../shared/auth/index");
-// const { RegisterUsers } = require("./register-users");
 const { CONFIRM } = require("./confirm");
-// const { LOGIN } = require("./login-users");
 const { ChangeNumber } = require("./change-number");
 const { upload } = require("../../shared/config/multer.config");
 
@@ -34,10 +32,9 @@ router.get("/users", AllUsersM, all_users);
 router.get("/users/me", FindMyM, find_my);
 router.get("/users/:id", FindByIdM, findby_id);
 router.post("/users", AddUserM, add_users);
-router.put("/users/me", upload.single("avatar"), UpdateUserM, update_user);
+router.put("/users/me", UpdateUserM, update_user);
 router.put(
   "/users/:id",
-  upload.single("avatar"),
   UpdateAllUsersM,
   update_all_users
 );
