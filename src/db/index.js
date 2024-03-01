@@ -3,7 +3,7 @@ const config = require("../shared/config");
 
 const db = () => {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/JoyBorUzApi")
+    .connect(`mongodb://127.0.0.1:27017/JoyBorUzApi`)
     .then(() => {
       console.log("SERVER CONNECTED NICE ALL WORKED :) 🫡");
     })

@@ -21,14 +21,23 @@ const { upload } = require("../../shared/config/multer.config");
 
 const router = express.Router();
 
-let AllUsersM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let UpdateUserM = [isloggedIn, hasRole(["user"])];
-let AddUserM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let UpdateAllUsersM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let FindMyM = [isloggedIn, hasRole(["user"])];
-let FindByIdM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let DeleteUsersMeM = [isloggedIn, hasRole(["user"])];
-let DeleteUsersIdM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let AllUsersM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let UpdateUserM = [isloggedIn, hasRole(["user"])];
+// let AddUserM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let UpdateAllUsersM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let FindMyM = [isloggedIn, hasRole(["user"])];
+// let FindByIdM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let DeleteUsersMeM = [isloggedIn, hasRole(["user"])];
+// let DeleteUsersIdM = [isloggedIn, hasRole(["admin", "super_admin"])];
+
+let AllUsersM = [isloggedIn];
+let UpdateUserM = [isloggedIn];
+let AddUserM = [isloggedIn];
+let UpdateAllUsersM = [isloggedIn];
+let FindMyM = [isloggedIn];
+let FindByIdM = [isloggedIn];
+let DeleteUsersMeM = [isloggedIn];
+let DeleteUsersIdM = [isloggedIn];
 
 router.get("/users", AllUsersM, all_users);
 router.get("/users/me", FindMyM, find_my);

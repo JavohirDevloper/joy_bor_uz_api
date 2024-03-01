@@ -11,14 +11,20 @@ let isMongoId = require("../../shared/validator/isMongoId");
 
 let router = express.Router();
 
-let CreateCategoryM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let EditCategoryM = [isloggedIn, isMongoId, hasRole(["admin", "super_admin"])];
-let DeleteCategoryM = [
-  isloggedIn,
-  isMongoId,
-  hasRole(["admin", "super_admin"]),
-];
+// let CreateCategoryM = [isloggedIn, hasRole(["admin", "super_admin"])];
+// let EditCategoryM = [isloggedIn, isMongoId, hasRole(["admin", "super_admin"])];
+// let DeleteCategoryM = [
+//   isloggedIn,
+//   isMongoId,
+//   hasRole(["admin", "super_admin"]),
+// ];
+// let FIndByIdCategoryM = [isMongoId];
+
+let CreateCategoryM = [isloggedIn];
+let EditCategoryM = [isloggedIn, isMongoId];
+let DeleteCategoryM = [isloggedIn, isMongoId,];
 let FIndByIdCategoryM = [isMongoId];
+
 
 router.get("/category", all_category);
 router.get("/category/:id", FIndByIdCategoryM, findbyid_category);
