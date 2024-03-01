@@ -120,7 +120,6 @@ const delete_user_me = async (req, res, next) => {
     res.status(200).json({ data: result });
   } catch (error) {
     next(error);
-    w;
   }
 };
 

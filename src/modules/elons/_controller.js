@@ -18,7 +18,7 @@ const all_elons = async (req, res, next) => {
   }
 };
 
-const add_elons = async (req, res, next) => {
+const addelons = async (req, res, next) => {
   try {
     let result = await Add_Elons({
       body: req.body,
@@ -117,7 +117,7 @@ const resend_elon = async (req, res, next) => {
 
 module.exports = {
   all_elons,
-  add_elons,
+  addelons,
   update_all_elons,
   delete_elons,
   delete_elons_all,

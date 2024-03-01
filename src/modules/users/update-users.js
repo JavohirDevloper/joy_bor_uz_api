@@ -1,3 +1,5 @@
+const User = require("./User");
+
 const UpdateUserMe = async ({ body, params, file }) => {
   let existingUser = await User.findById({ _id: params.id, is_deleted: false });
   if (!existingUser) {

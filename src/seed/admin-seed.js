@@ -4,27 +4,36 @@ const admins = [
   {
     first_name: "ayubxon",
     last_name: "rahimov",
-    image: "Jhon_Doe.png",
+    image: "ayubxon.png",
     role: "super_admin",
     username: "ayubxon",
     password: hashSync("12345678", 10),
     // "is_deleted":false
   },
   {
-    first_name: "sherozbek",
-    last_name: "Baxtiyorov",
-    image: "sherozbek.png",
+    first_name: "Javohir",
+    last_name: "Muxammadiyev",
+    image: "javohir.png",
     role: "super_admin",
-    username: "sherozbek.17",
+    username: "javohir",
     password: hashSync("12345678", 10),
     // "is_deleted":false
   },
   {
-    first_name: "Husan",
-    last_name: "Orif",
-    image: "husan.png",
+    first_name: "Shaxboz",
+    last_name: "Pulatov",
+    image: "shaxboz.png",
     role: "super_admin",
-    username: "husan",
+    username: "shaxboz",
+    password: hashSync("12345678", 10),
+    // "is_deleted":false
+  },
+  {
+    first_name: "Ogʻabek",
+    last_name: "Tirkashov",
+    image: "ogabek.png",
+    role: "admin",
+    username: "ogabek",
     password: hashSync("12345678", 10),
     // "is_deleted":false
   },
@@ -38,29 +47,11 @@ const admins = [
     // "is_deleted":false
   },
   {
-    first_name: "admin2",
-    last_name: "super_.)",
-    image: "admin2.png",
-    role: "admin",
-    username: "admin2",
-    password: hashSync("12345678", 10),
-    // "is_deleted":false
-  },
-  {
-    first_name: "asadbek",
+    first_name: "Javlonbek",
     last_name: "bilmadim",
-    image: "asadbek.png",
+    image: "javlonbek.png",
     role: "admin",
-    username: "asadbek",
-    password: hashSync("12345678", 10),
-    // "is_deleted":false
-  },
-  {
-    first_name: "user",
-    last_name: "last_user",
-    image: "user.png",
-    role: "admin",
-    username: "user",
+    username: "javlonbek",
     password: hashSync("12345678", 10),
     // "is_deleted":false
   },

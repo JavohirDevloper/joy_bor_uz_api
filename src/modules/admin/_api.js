@@ -14,13 +14,20 @@ const {
 
 const router = express.Router();
 
-const mRegisterAdmin = [isloggedIn, hasRole(["super_admin"])];
-const mListAdmin = [isloggedIn, hasRole(["admin", "super_admin"])];
-const mShowAdmin = [isloggedIn, MongoId, hasRole(["admin", "super_admin"])];
-const mRemoveAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
-const mUnremoveAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
-const mEditAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
-const mChangePasswordAdmin = [isloggedIn, hasRole(["super_admin"])];
+// const mRegisterAdmin = [isloggedIn, hasRole(["super_admin"])];
+// const mListAdmin = [isloggedIn, hasRole(["admin", "super_admin"])];
+// const mShowAdmin = [isloggedIn, MongoId, hasRole(["admin", "super_admin"])];
+// const mRemoveAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
+// const mUnremoveAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
+// const mEditAdmin = [isloggedIn, MongoId, hasRole(["super_admin"])];
+// const mChangePasswordAdmin = [isloggedIn, hasRole(["super_admin"])];
+const mRegisterAdmin = [isloggedIn];
+const mListAdmin = [isloggedIn];
+const mShowAdmin = [isloggedIn, MongoId];
+const mRemoveAdmin = [isloggedIn, MongoId];
+const mUnremoveAdmin = [isloggedIn, MongoId];
+const mEditAdmin = [isloggedIn, MongoId];
+const mChangePasswordAdmin = [isloggedIn];
 
 router.post("/register/admin", mRegisterAdmin, add_admin);
 router.post("/login/admin", login_admin);

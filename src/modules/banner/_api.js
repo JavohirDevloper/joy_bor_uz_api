@@ -11,10 +11,10 @@ const { isloggedIn, hasRole } = require("../../shared/auth");
 
 let router = express.Router();
 
-let AddBannerM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let EditBannerM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let RemoveBannerM = [isloggedIn, hasRole(["admin", "super_admin"])];
-let UnremoveBannerM = [isloggedIn, hasRole(["admin", "super_admin"])];
+let AddBannerM = [isloggedIn];
+let EditBannerM = [isloggedIn];
+let RemoveBannerM = [isloggedIn];
+let UnremoveBannerM = [isloggedIn];
 
 router.post("/banner", AddBannerM, add_banner);
 router.put("/banner/:id", EditBannerM, edit_banner);

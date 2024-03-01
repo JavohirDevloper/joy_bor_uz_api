@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  add_elons,
+  addelons,
   all_elons,
   update_all_elons,
   update_elons,
@@ -28,7 +28,7 @@ let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
 let FindWaitingElonsM = [isloggedIn, hasRole(["admin", "super_admin"])];
 let ResendM = [isloggedIn, hasRole(["user"])];
 
-router.post("/elons", upload.array("images", 5), AddElonM, add_elons);
+router.post("/elons", upload.array("images", 5), AddElonM, addelons);
 router.get("/elons", all_elons);
 router.put(
   "/elonsadmin/:id",

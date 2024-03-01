@@ -1,5 +1,5 @@
 const { NotFoundError } = require("../../shared/errors");
-const Elon = require("./Elon");
+const {Elon} = require("./Elon");
 
 const FindByIdElons = async ({ params }) => {
   let existingelons = await Elon.findById({
