@@ -28,11 +28,7 @@ let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
 let FindWaitingElonsM = [isloggedIn, hasRole(["admin", "super_admin"])];
 let ResendM = [isloggedIn, hasRole(["user"])];
 
-<<<<<<< HEAD
 router.post("/elons", upload.array("images", 5), AddElonM, addelons);
-=======
-router.post("/elons", AddElonM, add_elons);
->>>>>>> origin
 router.get("/elons", all_elons);
 router.put("/elonsadmin/:id",UpdateElonsAllM,update_all_elons);
 router.put("/elons/:id", UpdateElonsM, update_elons);
