@@ -1,11 +1,10 @@
 const { Elon } = require("./Elon");
 
-const AllElons = async (req) => {
-  const page = parseInt(req.query.page, 10) || 1;
-  const pageSize = parseInt(req.query.pageSize, 10) || 10;
-
-  const categories = req.query.categories
-    ? req.query.categories.split(",")
+const AllElons = async ({req}) => {
+  const page = parseInt(req?.query?.page, 10) || 1;
+  const pageSize = parseInt(req?.query?.pageSize, 10) || 10;
+  const categories = req?.query?.categories
+    ? req?.query?.categories.split(",")
     : [];
 
   const filter = {

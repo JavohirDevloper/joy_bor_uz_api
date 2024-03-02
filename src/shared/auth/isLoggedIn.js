@@ -23,7 +23,7 @@ const isLoggedIn = async (req, res, next) => {
     console.log(decoded);
 
     req.user = decoded;
-
+    console.log(decoded);
     next();
   } catch (error) {
     next(new UnauthorizedError(error.message));

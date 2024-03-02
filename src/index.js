@@ -21,6 +21,7 @@ const CategoryRoute = require("./modules/category/_api");
 const ChatRoute = require("./modules/chat/_api");
 const MessageRoute = require("./modules/messages/_api");
 const NotficationElonRoute = require("./modules/notificationElon/_api");
+const UploadRoute = require("./modules/Upload/_api");
 
 app.use(adminRoute);
 app.use(UserRoute);
@@ -30,6 +31,10 @@ app.use(CategoryRoute);
 app.use(ChatRoute);
 app.use(MessageRoute);
 app.use(NotficationElonRoute);
+app.use(UploadRoute)
+
+app.use('/public', express.static(path.join(__dirname, '..', 'public')))
+
 
 db();
 

@@ -2,7 +2,7 @@ const { BadRequestError, NotFoundError } = require("../../shared/errors");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Update_Elons = async ({ params, body, user, files }) => {
+const Update_Elons = async ({ params, body, user }) => {
   let findElons = Elon.findById({ _id: params.id });
 
   if (!findElons) {
@@ -19,7 +19,7 @@ const Update_Elons = async ({ params, body, user, files }) => {
       "bu sizning eloningiz emas uzir buni yangi olmaysiz"
     );
   }
-  let imagePaths = files.map((file) => "/public/" + file.filename);
+  let imagePaths = body.images.map((file) => "/public/" + file.filename);
 
   let UpdateObj = {
     title: body.title ? body.title : findElons.title,

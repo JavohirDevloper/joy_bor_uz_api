@@ -12,6 +12,7 @@ const hasRole = (roles) => {
   return async (req, res, next) => {
     try {
       const { role } = req.user;
+      console.log(req.user);
       if (!roles.includes(role)) {
         throw new ForbiddenError(`This ${role} is not allowed this right!`);
       }
