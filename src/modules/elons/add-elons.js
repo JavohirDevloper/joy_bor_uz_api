@@ -10,11 +10,11 @@ const Add_Elons = async ({ body, user }) => {
 
   let findCategory = await Category.findById(category);
 
-  let imagePaths = body.files.map((file) => "/public/" + file.filename);
-
-  if (!imagePaths.length) {
+  if (!body.files || !body.files.length) {
     throw new NotFoundError("imaglar kelishi shart");
   }
+
+  let imagePaths = body.files.map((file) => "/public/" + file.filename);
 
   let adding_elons = await Elon.create({
     title,

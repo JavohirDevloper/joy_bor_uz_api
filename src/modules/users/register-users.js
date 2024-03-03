@@ -88,7 +88,7 @@ const RegisterUsers = async ({ body }) => {
     }
 
     const newUser = new User({
-      fullname: "",
+      fullname: " ",
       phone_number,
     });
 

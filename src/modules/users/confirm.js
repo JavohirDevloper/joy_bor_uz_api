@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const CONFIRM = async (req, res) => {
   try {
-    const { user_id, code, fullname } = req.body;
+    const { user_id, code } = req.body;
 
     const verificationCode = await Verification.findOne({
       user_id,
@@ -30,7 +30,7 @@ const CONFIRM = async (req, res) => {
       );
 
       user.status = "active";
-      user.fullname = fullname;
+      // user.fullname = fullname;
       await user.save();
 
       res.status(200).json({
