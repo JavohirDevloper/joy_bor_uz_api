@@ -32,8 +32,13 @@ router.get("/users", AllUsersM, all_users);
 router.get("/users/me", FindMyM, find_my);
 router.get("/users/:id", FindByIdM, findby_id);
 router.post("/users", AddUserM, add_users);
-router.put("/users/me", UpdateUserM, update_user);
-router.put("/users/:id", UpdateAllUsersM, update_all_users);
+router.put("/users/me", upload.single("avatar"), UpdateUserM, update_user);
+router.put(
+  "/users/:id",
+  upload.single("avatar"),
+  UpdateAllUsersM,
+  update_all_users
+);
 router.post("/users/registerorlogin", loginorregister);
 router.post("/users/confirm", CONFIRM);
 router.post("/users/changenumber", ChangeNumber);
