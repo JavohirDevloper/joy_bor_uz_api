@@ -1,3 +1,6 @@
+const { NotFoundError, BadRequestError } = require("../../shared/errors");
+const User = require("./User");
+
 const UpdateUserAll = async ({ body, params }) => {
   let existingUser = await User.findById({ _id: params.id, is_deleted: false });
   if (!existingUser) {
@@ -24,4 +27,4 @@ const UpdateUserAll = async ({ body, params }) => {
   return editedUser;
 };
 
-module.exports = UpdateUserAll;
+module.exports = {UpdateUserAll};

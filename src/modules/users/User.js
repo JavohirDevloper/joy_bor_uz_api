@@ -9,7 +9,6 @@ const UserSchema = new mongoose.Schema(
   {
     fullname: {
       type: mongoose.SchemaTypes.String,
-      required: true,
     },
     role: {
       type: mongoose.SchemaTypes.String,

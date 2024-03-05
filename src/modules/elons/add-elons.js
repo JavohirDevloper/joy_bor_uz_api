@@ -1,22 +1,20 @@
-const { NotFoundError } = require("../../shared/errors");
 const { Category } = require("../category/Category");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Add_Elons = async ({ body, user }) => {
+const Add_Elons = async ({ body, user, files }) => {
   let { title, description, category, ...data } = body;
-
   let findUser = await User.findById({ _id: user._id });
 
   let findCategory = await Category.findById(category);
 
-  let imagePaths = files.map((file) => "/public/" + file.filename);
+  let imagePaths = [];
 
-  if (!imagePaths.length) {
+  if (files && Array.isArray(files)) {
+    imagePaths = files.map((file) => "/public/" + file.filename);
+  } else {
     throw new NotFoundError("imaglar kelishi shart");
   }
-
-  let imagePaths = body.files.map((file) => "/public/" + file.filename);
 
   let adding_elons = await Elon.create({
     title,

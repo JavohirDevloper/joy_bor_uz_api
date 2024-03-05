@@ -79,7 +79,7 @@ const update_user = async (req, res, next) => {
  * @param {express.NextFunction} next
  */
 
-const update_all_users = async () => {
+const update_all_users = async (req, res, next) => {
   try {
     httpValidator({ body: req.body }, UpdateUserSchema);
     let result = await UpdateUserAll({ body: req.body, params: req.params });

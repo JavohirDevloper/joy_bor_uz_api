@@ -4,13 +4,13 @@ const UpdateUserMe = async ({ body, params, file }) => {
     throw new NotFoundError("user topilmadi!");
   }
 
-    let existingPhoneNumber = await User.findOne({
-      phone_number: body.phone_number,
-    });
+  let existingPhoneNumber = await User.findOne({
+    phone_number: body.phone_number,
+  });
 
-    if (existingPhoneNumber) {
-      throw new BadRequestError("phone_number already existed!");
-    }
+  if (existingPhoneNumber) {
+    throw new BadRequestError("phone_number already existed!");
+  }
 
   let updateUserObj = {
     fullname: body.fullname || existingUser.fullname,
@@ -18,11 +18,10 @@ const UpdateUserMe = async ({ body, params, file }) => {
     profilePic: file ? "/public/" + file.filename : existingUser.profilePic,
   };
 
-    let editedUser = await User.findByIdAndUpdate(params.id, updateUserObj, {
-      new: true,
-    });
-    return editedUser;
-  };
+  let editedUser = await User.findByIdAndUpdate(params.id, updateUserObj, {
+    new: true,
+  });
+  return editedUser;
 };
 
 module.exports = UpdateUserMe;

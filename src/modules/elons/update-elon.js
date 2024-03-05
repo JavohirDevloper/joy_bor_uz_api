@@ -3,13 +3,13 @@ const User = require("../users/User");
 const { Elon } = require("./Elon");
 
 const Update_Elons = async ({ params, body, user }) => {
-  let findElons = Elon.findById({ _id: params.id });
+  let findElons = await Elon.findById(params.id);
 
   if (!findElons) {
     throw new BadRequestError("not found elons");
   }
 
-  let FindEUser = await User.findById({ _id: user.id });
+  let FindEUser = await User.findById(user._id);
   if (!FindEUser) {
     throw new NotFoundError("not found user");
   }
@@ -47,7 +47,7 @@ const Update_Elons = async ({ params, body, user }) => {
   };
 
   let update_elons = await Elon.findByIdAndUpdate(
-    { _id: params.id },
+    params.id,
     { ...UpdateObj },
     { new: true }
   );

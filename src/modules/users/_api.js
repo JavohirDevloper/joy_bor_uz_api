@@ -31,7 +31,7 @@ let DeleteUsersIdM = [isloggedIn, hasRole(["admin", "super_admin"])];
 router.get("/users", AllUsersM, all_users);
 router.get("/users/me", FindMyM, find_my);
 router.get("/users/:id", FindByIdM, findby_id);
-router.post("/users", AddUserM, add_users);
+router.post("/users",  upload.single("avatar"), AddUserM, add_users);
 router.put("/users/me", upload.single("avatar"), UpdateUserM, update_user);
 router.put(
   "/users/:id",

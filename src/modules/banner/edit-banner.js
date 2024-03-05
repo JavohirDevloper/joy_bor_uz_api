@@ -1,32 +1,30 @@
 const { NotFoundError, BadRequestError } = require("../../shared/errors");
 const { Banner } = require("./Banner");
-
-const EditBanner = async ({ params, body, file }) => {
+const EditBanner = async ({ params, body }) => {
   let FindBanner = await Banner.findById(params.id);
 
-  if (!FindBanner) {
-    throw new NotFoundError("user not found");
+  let title = body.title || FindBanner.title;
+
+  if (title !== FindBanner.title) {
+    let existingBanner = await Banner.findOne({
+      title,
+      _id: { $ne: params.id },
+    });
+
+    if (existingBanner) {
+      throw new BadRequestError("Banner already exists");
+    }
   }
-
-  let exstingNameBanner = await Banner.findOne(body.title);
-
-  if (exstingNameBanner) {
-    throw new BadRequestError("banner already created");
-  }
-
   let updateObject = {
-    title: body.title ? body.title : FindBanner.title,
-    descrtion: body.descrtion ? body.descrtion : FindBanner.descrtion,
+    title,
+    descrtion: body.descrtion || FindBanner.descrtion,
   };
-  let updateBanner = await Banner.findByIdAndUpdate(
-    params.id,
-    {
-      updateObject,
-    },
-    { new: true }
-  );
 
-  return updateBanner;
+  let updatedBanner = await Banner.findByIdAndUpdate(params.id, updateObject, {
+    new: true,
+  });
+
+  return updatedBanner;
 };
 
 module.exports = { EditBanner };

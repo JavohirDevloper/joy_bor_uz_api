@@ -6,7 +6,7 @@ const Admin = require("../modules/admin/Admin");
 const AdminSeed = require("./admin-seed");
 
 const seedData = async () => {
-  const uri = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
+  const uri = `mongodb+srv://rahimovayubxon48:lA0l3rsOFoxddbYr@joyboruz.pvor4db.mongodb.net/`
   mongoose.set("strictQuery", false);
   mongoose
     .connect(uri, {

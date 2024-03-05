@@ -30,7 +30,7 @@ const CONFIRM = async (req, res) => {
       );
 
       user.status = "active";
-      // user.fullname = fullname;
+      user.fullname = "User";
       await user.save();
 
       res.status(200).json({
