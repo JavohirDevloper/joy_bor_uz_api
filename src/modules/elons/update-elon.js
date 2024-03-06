@@ -19,7 +19,7 @@ const Update_Elons = async ({ params, body, user }) => {
       "bu sizning eloningiz emas uzir buni yangi olmaysiz"
     );
   }
-  let imagePaths = body.images.map((file) => "/public/" + file.filename);
+  let imagePaths = body.images?.map((file) => "/public/" + file.filename);
 
   let UpdateObj = {
     title: body.title ? body.title : findElons.title,

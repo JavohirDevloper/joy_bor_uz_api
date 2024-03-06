@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let NotficationElonSchema = mongoose.Schema(
+let NotficationElonSchema = new mongoose.Schema(
   {
     notfication_user: {
       type: mongoose.SchemaTypes.ObjectId,

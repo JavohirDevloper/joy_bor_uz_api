@@ -6,15 +6,18 @@ const DeleteElons = async ({ params, user }) => {
   let FindELons = await Elon.findById({ _id: params.id });
 
   if (!FindELons) {
-    throw new NotFoundError("not found elon");
+    throw new NotFoundError("elon topilmadi");
   }
-  let FindEUser = await User.findById({ _id: user.id });
+
+  let FindEUser = await User.findById({ _id: params.id });
+
   if (!FindEUser) {
-    throw new NotFoundError("not found user");
+    throw new NotFoundError("foydalanuvchi topilmadi");
   }
+
   if (!FindEUser.elons.includes(params.id)) {
     throw new BadRequestError(
-      "bu sizning eloningiz emas uzir buni ochira olmaysiz"
+      "Bu sizning eloningiz emas, shuning uchun uni o'chira olmaysiz"
     );
   }
 

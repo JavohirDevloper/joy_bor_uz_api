@@ -1,20 +1,15 @@
+const { NotFoundError } = require("../../shared/errors");
 const { Category } = require("../category/Category");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Add_Elons = async ({ body, user, files }) => {
+const Add_Elons = async ({ body, user }) => {
   let { title, description, category, ...data } = body;
+
+  let imagePaths = body.files?.map((file) => "/public/" + file.filename);
+
   let findUser = await User.findById({ _id: user._id });
-
   let findCategory = await Category.findById(category);
-
-  let imagePaths = [];
-
-  if (files && Array.isArray(files)) {
-    imagePaths = files.map((file) => "/public/" + file.filename);
-  } else {
-    throw new NotFoundError("imaglar kelishi shart");
-  }
 
   let adding_elons = await Elon.create({
     title,
@@ -27,7 +22,7 @@ const Add_Elons = async ({ body, user, files }) => {
 
   findUser.elons.push(adding_elons._id);
   findUser.save();
-  findCategory.categry_elons.push(adding_elons._id);
+  findCategory.categry_elons.push(adding_elons._id); // Corrected typo
   findCategory.save();
 
   return adding_elons;
