@@ -15,7 +15,11 @@ const UserSchema = new mongoose.Schema(
       enum: ["user"],
       default: "user",
     },
-    phone_number: { type: mongoose.SchemaTypes.String, required: true },
+    phone_number: {
+      type: mongoose.SchemaTypes.String,
+      required: true,
+      unique: true,
+    },
     elons: [
       {
         type: mongoose.SchemaTypes.ObjectId,

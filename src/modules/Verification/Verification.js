@@ -9,7 +9,11 @@ const VerificationSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  phone_number: { type: mongoose.SchemaTypes.String, required: true },
+  phone_number: {
+    type: mongoose.SchemaTypes.String,
+    unique: true,
+    required: true,
+  },
   time: {
     type: Date,
     default: Date.now,

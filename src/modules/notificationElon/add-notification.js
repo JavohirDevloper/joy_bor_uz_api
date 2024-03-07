@@ -1,6 +1,6 @@
 const { NotFoundError } = require("../../shared/errors");
 const User = require("../users/User");
-const { NotificationElonModel } = require("./NotificationElon");
+const NotificationElonModel = require("./NotificationElon");
 
 const AddNotification = async ({ body, user }) => {
   let { text, elon_id, user_id } = body;

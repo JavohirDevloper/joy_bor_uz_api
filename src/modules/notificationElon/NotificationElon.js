@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let NotficationElonSchema = new mongoose.Schema(
+const NotficationElonSchema = new mongoose.Schema(
   {
     notfication_user: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -32,4 +32,4 @@ const NotficationElonModel = mongoose.model(
   NotficationElonSchema
 );
 
-module.exports = { NotficationElonModel };
+module.exports = NotficationElonModel;

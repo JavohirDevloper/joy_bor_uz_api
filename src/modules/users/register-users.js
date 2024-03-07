@@ -68,6 +68,7 @@ const RegisterUsers = async ({ body }) => {
           msg: "nice",
           data: {
             user_id: phone._id,
+            token: token,
           },
         };
       }
@@ -83,6 +84,7 @@ const RegisterUsers = async ({ body }) => {
         msg: "nice",
         data: {
           user_id: phone._id,
+          token: token, // Tokenni javobga qo'shing
         },
       };
     }
@@ -144,7 +146,7 @@ const RegisterUsers = async ({ body }) => {
         return {
           success: true,
           msg: "Success",
-          data: { user_id: user._id },
+          data: { user_id: user._id, token: token },
         };
       }
 
@@ -156,7 +158,7 @@ const RegisterUsers = async ({ body }) => {
       return {
         success: true,
         msg: "Success",
-        data: { user_id: user._id },
+        data: { user_id: user._id.toString(), token: token },
       };
     } catch (error) {
       return { message: error.message };

@@ -1,6 +1,6 @@
+const express = require("express");
 const AddNotifiocation = require("./add-notification");
 const AllNotfication = require("./all-notification");
-const express = require("express");
 const Mynotifications = require("./my-notifications");
 const FindByIdNotification = require("./findbyid-notification");
 const ChangeNotificationStatus = require("./change-notification-status");
@@ -32,7 +32,7 @@ const all_notification = async (req, res, next) => {
 
 const add_notification = async (req, res, next) => {
   try {
-    let result = AddNotifiocation({ body: req.body, user: req.user });
+    let result = AddNotifiocation({ body: req.body });
     res.status(201).json(result);
   } catch (error) {
     next(error);
