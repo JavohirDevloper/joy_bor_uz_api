@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const messageSchema = mongoose.Schema(
+const messageSchema = new mongoose.Schema(
   {
     sender: {
       type: mongoose.Schema.Types.ObjectId,
@@ -19,4 +19,5 @@ const messageSchema = mongoose.Schema(
   }
 );
 const messageModel = mongoose.model("Message", messageSchema);
+
 module.exports = { messageModel };

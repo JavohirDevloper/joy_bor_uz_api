@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const chatSchema = mongoose.Schema(
+const chatSchema = new mongoose.Schema(
   {
     photo: {
       type: String,
