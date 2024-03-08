@@ -4,7 +4,7 @@ const { Banner } = require("./Banner");
 const UnRemoveBanner = async ({ params }) => {
   let exstingBanner = await Banner.findById({
     _id: params.id,
-    is_deleted_true,
+    is_deleted: true,
   });
 
   if (!exstingBanner) {
@@ -19,4 +19,4 @@ const UnRemoveBanner = async ({ params }) => {
   return updatebanner;
 };
 
-module.exports = {UnRemoveBanner}
+module.exports = { UnRemoveBanner };
