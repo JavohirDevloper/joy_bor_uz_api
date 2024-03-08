@@ -1,19 +1,23 @@
 const { NotFoundError } = require("../../shared/errors");
-const { NotficationElonModel } = require("./NotificationElon");
+const NotficationElonModel = require("./NotificationElon");
 
 const ChangeNotificationStatus = async ({ params, body }) => {
-  let ExstingNotification = await NotficationElonModel.findOne({
-    _id: params.id,
-  });
+  const { read_status } = body;
 
-  if (!ExstingNotification) {
-    throw new NotFoundError("notification not found");
+  const updatedNotification = await NotficationElonModel.findOneAndUpdate(
+    { _id: params.id },
+    { status: read_status },
+    { new: true }
+  );
+
+  if (!updatedNotification) {
+    throw new NotFoundError("not found notification :(");
   }
 
-  ExstingNotification.status = body.read_status === true;
-  await ExstingNotification.save();
+  updatedNotification.read_status = read_status; 
+  await updatedNotification.save();
 
-  return { message: "change status", data: ExstingNotification };
+  return { message: "change status", data: updatedNotification };
 };
 
 module.exports = ChangeNotificationStatus;

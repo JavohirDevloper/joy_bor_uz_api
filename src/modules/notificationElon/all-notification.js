@@ -1,4 +1,4 @@
-const { NotficationElonModel } = require("./NotificationElon");
+const NotficationElonModel = require("./NotificationElon");
 
 const AllNotfication = async () => {
   let all = await NotficationElonModel.find();

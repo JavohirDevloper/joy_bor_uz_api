@@ -41,8 +41,8 @@ db();
 app.use(handleError);
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-const server = app.listen(5000, () => {
-  console.log(`Server Listening at PORT - ${5000}`);
+const server = app.listen(6000, () => {
+  console.log(`Server Listening at PORT - ${6000}`);
 });
 
 const io = new Server.Server(server, {

@@ -17,7 +17,7 @@ const AddNotification = async ({ body, user }) => {
     text,
     elon: elon_id,
     notification_user: user_id,
-    notificationCreator: user._id,
+    notificationCreator: user_id,
   });
 
   return { message: "notification created", data: createNotification };

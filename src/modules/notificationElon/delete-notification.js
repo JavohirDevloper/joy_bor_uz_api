@@ -1,14 +1,16 @@
 const { NotFoundError } = require("../../shared/errors");
-const { NotficationElonModel } = require("./NotificationElon");
+const NotficationElonModel = require("./NotificationElon");
 
 const DeleteNotification = async ({ params }) => {
-  let ExstingNotification = await NotficationElonModel.findOne({
-    _id: params.id,
-  });
-  if (!ExstingNotification) {
-    throw new NotFoundError("not found notification");
+  let existingNotification = await NotficationElonModel.findById(params.id);
+
+  if (!existingNotification) {
+    throw new NotFoundError("Notification not found");
   }
-  await NotficationElonModel.deleteOne(params.id);
-  return { messaage: "notification deleted" };
+
+  await NotficationElonModel.findByIdAndRemove({ _id: params.id });
+
+  return { message: "Notification deleted" };
 };
+
 module.exports = DeleteNotification;

@@ -32,4 +32,4 @@ const NotficationElonModel = mongoose.model(
   NotficationElonSchema
 );
 
-module.exports = {NotficationElonModel};
+module.exports = NotficationElonModel;
