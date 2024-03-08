@@ -2,7 +2,9 @@ const { NotFoundError } = require("../../shared/errors");
 const { NotficationElonModel } = require("./NotificationElon");
 
 const UpdateNotification = async ({ body, params }) => {
-  let ExstingNotification = await NotficationElonModel.findOne(params.id);
+  let ExstingNotification = await NotficationElonModel.findOne({
+    _id: params.id,
+  });
 
   if (!ExstingNotification) {
     3;
