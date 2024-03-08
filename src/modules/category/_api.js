@@ -11,24 +11,18 @@ let isMongoId = require("../../shared/validator/isMongoId");
 
 let router = express.Router();
 
-// let CreateCategoryM = [isloggedIn, hasRole(["admin", "super_admin"])];
-// let EditCategoryM = [isloggedIn, isMongoId, hasRole(["admin", "super_admin"])];
-// let DeleteCategoryM = [
-//   isloggedIn,
-//   isMongoId,
-//   hasRole(["admin", "super_admin"]),
-// ];
-// let FIndByIdCategoryM = [isMongoId];
-
-let CreateCategoryM = [isloggedIn];
-let EditCategoryM = [isloggedIn, isMongoId];
-let DeleteCategoryM = [isloggedIn, isMongoId,];
+let CreateCategoryM = [isloggedIn, hasRole(["admin", "super_admin"])];
+let EditCategoryM = [isloggedIn, isMongoId, hasRole(["admin", "super_admin"])];
+let DeleteCategoryM = [
+  isloggedIn,
+  isMongoId,
+  hasRole(["admin", "super_admin"]),
+];
 let FIndByIdCategoryM = [isMongoId];
-
 
 router.get("/category", all_category);
 router.get("/category/:id", FIndByIdCategoryM, findbyid_category);
-router.post("/category",CreateCategoryM, add_category);
+router.post("/category", CreateCategoryM, add_category);
 router.put("/category/:id", EditCategoryM, edit_category);
 router.delete("/category/:id", DeleteCategoryM, delete_category);
 
