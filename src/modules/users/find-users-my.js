@@ -2,7 +2,7 @@ const { NotFoundError } = require("../../shared/errors");
 const User = require("./User");
 
 const FindUsers = async ({ user }) => {
-  let existingUser = await User.findById({ _id: user.id }).populate([
+  let existingUser = await User.findById({ _id: user._id }).populate([
     { path: "elons" },
     { path: "saved_elons" },
   ]);
