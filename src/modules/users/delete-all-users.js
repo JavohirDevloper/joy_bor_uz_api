@@ -1,15 +1,28 @@
 let User = require("./User");
 let { NotFoundError } = require("../../shared/errors");
+
 const DeleteUsersAll = async ({ user }) => {
-  let findUser = await User.findById({ _id: user.id });
-  if (!findUser) {
-    throw new NotFoundError("user not found");
+  if (!user || !user._id) {
+    throw new NotFoundError("Invalid user object. Missing _id field.");
   }
-  let updateUser = await User.findByIdAndUpdate(
-    { _id: user.id },
-    { is_deleted: findUser.is_deleted == false ? true : false },
-    { new: true }
-  );
-  return updateUser;
+
+  try {
+    let findUser = await User.findById(user._id);
+    if (!findUser) {
+      throw new NotFoundError("User not found");
+    }
+
+    let isDeleted = !findUser.is_deleted;
+    let updateUser = await User.findByIdAndUpdate(
+      user._id,
+      { is_deleted: isDeleted },
+      { new: true }
+    );
+
+    return updateUser;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
+
 module.exports = { DeleteUsersAll };
