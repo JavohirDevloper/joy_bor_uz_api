@@ -7,10 +7,10 @@ const AllElons = async ({ req }) => {
     ? req?.query?.categories.split(",")
     : [];
 
-  const filter = {
-    elon_holati: "sucses",
-    category: { $in: categories },
-  };
+  const filter =
+    categories.length > 0
+      ? { elon_holati: "sucses", category: { $in: categories } }
+      : { elon_holati: "sucses" };
 
   const skip = (page - 1) * pageSize;
 
@@ -26,7 +26,7 @@ const AllElons = async ({ req }) => {
     .skip(skip)
     .limit(pageSize);
 
-  return all_elons;
+  return { all_elons, page, skip };
 };
 
 module.exports = { AllElons };
