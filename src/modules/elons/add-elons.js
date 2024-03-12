@@ -3,7 +3,7 @@ const { Category } = require("../category/Category");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Add_Elons = async ({ body, user }) => {
+const Add_Elons = async ({ body, files, user }) => {
   let { title, description, category, ...data } = body;
 
   let imagePaths = body.files?.map((file) => "/public/" + file.filename);
@@ -22,8 +22,10 @@ const Add_Elons = async ({ body, user }) => {
 
   findUser.elons.push(adding_elons._id);
   findUser.save();
-  findCategory.categry_elons.push(adding_elons._id); // Corrected typo
+  findCategory.categry_elons.push(adding_elons._id);
   findCategory.save();
+
+  adding_elons = await Elon.findById(adding_elons._id).populate("images");
 
   return adding_elons;
 };

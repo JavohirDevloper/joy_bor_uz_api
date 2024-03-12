@@ -61,7 +61,6 @@ const loginorregister = async (req, res, next) => {
 const update_user = async (req, res, next) => {
   try {
     httpValidator({ body: req.body }, UpdateUserSchema);
-    console.log(req.params);
     let result = await UpdateUserMe({
       body: req.body,
       params: req.params,

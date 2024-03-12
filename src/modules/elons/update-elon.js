@@ -1,8 +1,8 @@
-const { BadRequestError, NotFoundError } = require("../../shared/errors");
+const { BadRequestError } = require("../../shared/errors");
 const User = require("../users/User");
 const { Elon } = require("./Elon");
 
-const Update_Elons = async ({ params, body, user }) => {
+const Update_Elons = async ({ params, body, user, files }) => {
   let findElons = await Elon.findById(params.id);
 
   if (!findElons) {

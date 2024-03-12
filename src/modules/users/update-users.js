@@ -2,17 +2,18 @@ const { BadRequestError, NotFoundError } = require("../../shared/errors");
 const User = require("./User");
 
 const UpdateUserMe = async ({ body, params, file }) => {
-  let existingUser = await User.findById({ _id: params.id, is_deleted: false });
+  let existingUser = await User.findById(params.id);
   if (!existingUser) {
-    throw new NotFoundError("user topilmadi!");
+    throw new NotFoundError("Foydalanuvchi topilmadi!");
   }
 
   let existingPhoneNumber = await User.findOne({
     phone_number: body.phone_number,
+    _id: { $ne: params.id },
   });
 
   if (existingPhoneNumber) {
-    throw new BadRequestError("phone_number already existed!");
+    throw new BadRequestError("Telefon raqami allaqachon mavjud!");
   }
 
   let updateUserObj = {

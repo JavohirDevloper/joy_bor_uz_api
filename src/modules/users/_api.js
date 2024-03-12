@@ -32,7 +32,7 @@ router.get("/users", AllUsersM, all_users);
 router.get("/users/me", FindMyM, find_my);
 router.get("/users/:id", FindByIdM, findby_id);
 router.post("/users", upload.single("avatar"), AddUserM, add_users);
-router.put("/users/me", upload.single("avatar"), UpdateUserM, update_user);
+router.put("/users/me/:id", upload.single("avatar"), UpdateUserM, update_user);
 router.put(
   "/users/:id",
   upload.single("avatar"),

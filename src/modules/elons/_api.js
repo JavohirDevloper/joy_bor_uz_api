@@ -23,9 +23,9 @@ let UpdateElonsM = [isloggedIn, hasRole(["user"])];
 let DeleteElonsM = [isloggedIn, hasRole(["user"])];
 let DeleteElonsAllM = [isloggedIn, hasRole(["admin", "super_admin"])];
 let ChangeProsesM = [isloggedIn, hasRole(["user", "admin", "super_admin"])];
-let LikedElonsM = [isloggedIn, hasRole([isloggedIn, hasRole("user")])];
+let LikedElonsM = [isloggedIn, hasRole(["user"])];
 let FindByIdElonsM = [isloggedIn, hasRole("user", "admin", "super_admin")];
-let FindWaitingElonsM = [isloggedIn, hasRole(["admin", "super_admin"])];
+let FindWaitingElonsM = [isloggedIn, hasRole(["super_admin"])];
 let ResendM = [isloggedIn, hasRole(["user"])];
 
 router.post("/elons", upload.array("images", 5), AddElonM, addelons);

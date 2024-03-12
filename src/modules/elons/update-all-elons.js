@@ -1,45 +1,39 @@
 const { BadRequestError } = require("../../shared/errors");
 const { Elon } = require("./Elon");
 
-const UpdateAll_Elons = async ({ params, body, }) => {
-  let findElons = Elon.findById({ _id: params.id });
-
-  if (!findElons) {
-    throw new BadRequestError("not found elons");
+const UpdateAll_Elons = async ({ params, body }) => {
+  let findElon = await Elon.findById(params.id);  
+  if (!findElon) {
+    throw new BadRequestError("Elon not found");
   }
-  let imagePaths = body.images.map((file) => "/public/" + file.filename);
 
-  let UpdateObj = {
-    title: body.title ? body.title : findElons.title,
-    description: body.description ? body.description : findElons.description,
-    honalar_soni: body.honalar_soni
-      ? body.honalar_soni
-      : findElons.honalar_soni,
-    uy_maydoni: body.uy_maydoni ? body.uy_maydoni : findElons.uy_maydoni,
-    nechinchi_qavat: body.nechinchi_qavat
-      ? body.nechinchi_qavat
-      : findElons.nechinchi_qavat,
-    uy_manzili: body.uy_manzili ? body.uy_manzili : findElons.uy_manzili,
-    category: body.category ? body.category : findElons.category,
-    remont: body.remont ? body.remont : findElons.remont,
-    price: body.price ? body.price : findElons.price,
-    qurilishda_ishlatilgan: body.qurilishda_ishlatilgan
-      ? body.qurilishda_ishlatilgan
-      : findElons.qurilishda_ishlatilgan,
-    uy_manzil_xaritada: body.uy_manzil_xaritada
-      ? body.uy_manzil_xaritada
-      : findElons.uy_manzil_xaritada,
-    elon_holati: body.elon_holati ? body.elon_holati : findElons.elon_holati,
-    images: imagePaths ? imagePaths : findElons.images,
+  let imagePaths;
+  if (body.images && body.images.length > 0) {
+    imagePaths = body.images.map((file) => "/public/" + file.filename);
+  }
+
+  let updateObj = {
+    title: body.title || findElon.title,
+    description: body.description || findElon.description,
+    honalar_soni: body.honalar_soni || findElon.honalar_soni,
+    uy_maydoni: body.uy_maydoni || findElon.uy_maydoni,
+    nechinchi_qavat: body.nechinchi_qavat || findElon.nechinchi_qavat,
+    uy_manzili: body.uy_manzili || findElon.uy_manzili,
+    category: body.category || findElon.category,
+    remont: body.remont || findElon.remont,
+    price: body.price || findElon.price,
+    qurilishda_ishlatilgan:
+      body.qurilishda_ishlatilgan || findElon.qurilishda_ishlatilgan,
+    uy_manzil_xaritada: body.uy_manzil_xaritada || findElon.uy_manzil_xaritada,
+    elon_holati: body.elon_holati || findElon.elon_holati,
+    images: imagePaths || findElon.images,
   };
 
-  let update_elons = await Elon.findByIdAndUpdate(
-    { _id: params.id },
-    { ...UpdateObj },
-    { new: true }
-  );
+  let updatedElon = await Elon.findByIdAndUpdate(params.id, updateObj, {
+    new: true,
+  });
 
-  return update_elons;
+  return updatedElon;
 };
 
 module.exports = { UpdateAll_Elons };
